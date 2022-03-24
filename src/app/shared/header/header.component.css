@@ -1,0 +1,24 @@
+a {
+  text-decoration: none;
+  color: #42a8c0;
+}
+
+ul {
+  margin: 1rem;
+  text-decoration-color: black;
+}
+
+::ng-deep .nav-link {
+  color: #42a8c0;
+}
+
+::ng-deep .nav-link:hover {
+  color: #2d7788;
+  transition: color 0.3s ease-in-out;
+}
+
+::ng-deep .nav-pills .nav-link.active,
+::ng-deep .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #42a8c0;
+}

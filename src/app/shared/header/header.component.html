@@ -1,0 +1,27 @@
+<ul ngbNav #nav="ngbNav" class="nav-pills justify-content-center">
+  <li [ngbNavItem]="1">
+    <a routerLink="home" ngbNavLink>Inicio</a>
+  </li>
+  <li [ngbNavItem]="2">
+    <a routerLink="about" ngbNavLink>Sobre este proyecto</a>
+  </li>
+  <li [ngbNavItem]="3">
+    <a routerLink="contact" ngbNavLink>Contactame</a>
+  </li>
+  <li [ngbNavItem]="4">
+    <a routerLink="login" ngbNavLink>Log-in</a>
+  </li>
+  <li [ngbNavItem]="5">
+    <a routerLink="cv" ngbNavLink>Mi curriculum</a>
+  </li>
+  <li ngbDropdown class="nav-item">
+    <a href (click)="(false)" class="nav-link" ngbDropdownToggle>Más</a>
+    <div ngbDropdownMenu>
+      <button ngbDropdownItem>
+        <a target="_blank" href="https://github.com/Teradriel"
+          ><i class="fab fa-github" aria-hidden="true"></i> Git-hub</a
+        >
+      </button>
+    </div>
+  </li>
+</ul>

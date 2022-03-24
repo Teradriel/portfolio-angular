@@ -1,0 +1,13 @@
+.footer {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+a {
+  color: #2d7788;
+}
+
+a:hover {
+  color: #42a8c0;
+  transition: color 0.3s ease-in-out;
+}

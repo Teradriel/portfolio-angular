@@ -1,0 +1,89 @@
+.container {
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+#login {
+  padding: 25px;
+  margin: 15px 0;
+  /* box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24); */
+}
+
+#login h3 {
+  display: block;
+  font-size: 30px;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+
+#login h4 {
+  margin: 5px 0 15px;
+  display: block;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+fieldset {
+  margin: 0 0 10px;
+  min-width: 100%;
+  padding: 0;
+  width: 100%;
+}
+
+#login input[type="text"],
+#login input[type="password"],
+#login textarea {
+  width: 100%;
+  border: 1px solid #ccc;
+  background: #fff;
+  margin: 0 0 5px;
+  padding: 10px;
+}
+
+#login input[type="text"]:hover,
+#login input[type="password"]:hover,
+#login textarea:hover {
+  transition: border-color 0.3s ease-in-out;
+  border: 1px solid #aaa;
+}
+
+#login textarea {
+  height: 100px;
+  max-width: 100%;
+  resize: none;
+}
+
+#login button[type="submit"],
+.btn {
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  background: #42a8c0;
+  color: #fff;
+  margin: 0 0 5px;
+  padding: 10px;
+  font-size: 15px;
+}
+
+#login button[type="submit"]:hover,
+.btn:hover {
+  background: #2d7788;
+  transition: background-color 0.3s ease-in-out;
+}
+
+#login button[type="submit"]:active,
+.btn:hover {
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+#login input:focus,
+#login textarea:focus {
+  outline: 0;
+  border: 1px solid #aaa;
+}
+
+::placeholder {
+  color: #888;
+}
