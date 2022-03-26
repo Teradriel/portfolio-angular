@@ -58,6 +58,7 @@
                 type="text"
                 required
             /></label>
+
             <label for="pass"
               ><input
                 type="password"
@@ -66,7 +67,9 @@
                 id="password"
                 required
                 placeholder="Ingresá tu contraseña"
+                pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"
             /></label>
+
             <label for="pass2"
               ><input
                 type="password"
@@ -75,6 +78,7 @@
                 id="password"
                 required
                 placeholder="Repetí la contraseña"
+                pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"
             /></label>
           </div>
         </div>
