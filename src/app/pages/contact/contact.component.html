@@ -1,8 +1,14 @@
 <body class="container">
-  <form id="contact" action="" method="POST">
+  <form
+    id="contact"
+    (ngSubmit)="onSubmit($event)"
+    [formGroup]="form"
+    method="POST"
+  >
     <h3>Mantente en contacto</h3>
-    <fieldset>
+    <label for="nombre">
       <input
+        id="nombre"
         name="nombre"
         placeholder="Nombre"
         type="text"
@@ -10,49 +16,47 @@
         required
         autofocus
       />
-    </fieldset>
-    <fieldset>
+    </label>
+    <label for="email">
       <input
+        id="email"
         name="email"
         placeholder="Email"
         type="email"
         tabindex="2"
         required
       />
-    </fieldset>
-    <fieldset>
+    </label>
+    <label for="telefono">
       <input
-        name="tel"
+        id="telefono"
+        name="telefono"
         placeholder="Telefono (opcional)"
         type="tel"
         tabindex="3"
       />
-    </fieldset>
-    <fieldset>
+    </label>
+    <label for="web">
       <input
-        name="url"
+        id="web"
+        name="web"
         placeholder="Sitio web (opcional)"
         type="url"
         tabindex="4"
       />
-    </fieldset>
-    <fieldset>
+    </label>
+    <label for="mensaje">
       <textarea
+        id="mensaje"
         name="mensaje"
         placeholder="Escribe tu mensaje"
         tabindex="5"
         required
       ></textarea>
-    </fieldset>
-    <fieldset>
-      <input
-        type="submit"
-        id="contact-submit"
-        name="submit"
-        data-submit="...Enviando"
-        value="Enviar"
-      />
-      <input type="reset" value="Borrar" />
-    </fieldset>
+    </label>
+    <label for="contact-submit">
+      <input type="submit" id="contact-submit" name="submit" value="Enviar"
+    /></label>
+    <label><input type="reset" value="Borrar" /></label>
   </form>
 </body>

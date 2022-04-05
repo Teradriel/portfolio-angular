@@ -1,0 +1,20 @@
+.container-block {
+  padding: 30px;
+}
+.container-block-title {
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+.languages-container .lang-desc {
+  color: rgba(255, 255, 255, 0.6);
+}
+.languages-list {
+  margin-bottom: 0;
+
+}
+.languages-list li:last-child {
+  margin-bottom: 10px;
+}

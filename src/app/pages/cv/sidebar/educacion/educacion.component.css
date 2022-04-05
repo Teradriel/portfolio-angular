@@ -1,0 +1,34 @@
+.container-block {
+  padding: 30px;
+}
+.container-block-title {
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.degree {
+  font-size: 14px;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+.education-container .item {
+  margin-bottom: 15px;
+}
+.education-container .item:last-child {
+  margin-bottom: 0;
+}
+.education-container .meta {
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+  margin-bottom: 0px;
+  margin-top: 0;
+  font-size: 14px;
+}
+.education-container .time {
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+  margin-bottom: 0px;
+}

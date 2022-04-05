@@ -1,0 +1,80 @@
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 700;
+}
+
+a {
+  color: #2d7788;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+  color: #1a454f;
+  transition: all 0.4s ease-in-out;
+}
+a:focus {
+  text-decoration: none;
+}
+
+p {
+  line-height: 1.5;
+}
+.section-title {
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 500;
+  color: #2d7788;
+  position: relative;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+.section-title .icon-holder {
+  width: 30px;
+  height: 30px;
+  margin-right: 8px;
+  display: inline-block;
+  color: #fff;
+  border-radius: 50%;
+  background-clip: padding-box;
+  background: #2d7788;
+  text-align: center;
+  padding-top: 5px;
+  font-size: 16px;
+  position: relative;
+  top: -4px;
+}
+.section-title .icon-holder .svg-inline--fa {
+  font-size: 14px;
+  margin-top: 8px;
+}
+.section {
+  margin-bottom: 60px;
+}
+.experiences-section .item {
+  margin-bottom: 30px;
+}
+.upper-row {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 2px;
+}
+.job-title {
+  color: #3f4650;
+  font-size: 16px;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: 500;
+}
+.time {
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: #97aac3;
+}
+.company {
+  margin-bottom: 10px;
+  color: #636970;
+}

@@ -1,17 +1,47 @@
 <div class="container">
-  <form id="login" action="" method="POST">
+  <form
+    [formGroup]="form"
+    id="login"
+    (ngSubmit)="submitLogin($event)"
+    method="POST"
+  >
     <h3>Ingresar</h3>
     <fieldset>
       <input
         placeholder="Usuario"
         type="text"
         tabindex="1"
-        required
         autofocus
+        formControlName="usuario"
       />
+      <div *ngIf="Usuario?.errors && Usuario?.touched">
+        <p *ngIf="Usuario?.hasError('required')" class="text-danger">
+          El usuario es obligatorio
+        </p>
+        <p *ngIf="Usuario?.hasError('minlength')" class="text-danger">
+          El usuario es muy corto
+        </p>
+      </div>
     </fieldset>
     <fieldset>
-      <input placeholder="Contraseña" type="password" tabindex="2" required />
+      <input
+        placeholder="Contraseña"
+        type="password"
+        tabindex="2"
+        formControlName="pass"
+      />
+      <div *ngIf="Pass?.errors && Pass?.touched">
+        <p *ngIf="Pass?.hasError('required')" class="text-danger">
+          La contraseña es obligatoria
+        </p>
+        <p *ngIf="Pass?.hasError('minlength')" class="text-danger">
+          La contraseña debe tener al menos 6 caracteres
+        </p>
+        <p *ngIf="Pass?.hasError('pattern')" class="text-danger">
+          La contraseña debe tener al menos una minúscula, una mayúscula y un
+          número
+        </p>
+      </div>
     </fieldset>
     <fieldset>
       <label class="checkbox">
@@ -46,36 +76,75 @@
       ></button>
     </div>
     <div class="modal-body">
-      <form id="crear_cuenta" action="" method="POST">
+      <form [formGroup]="newform" id="crear_cuenta" action="" method="POST">
         <div class="mb-3">
           <div class="input-group">
-            <label for="usuario">
+            <label for="newusuario">
               <input
-                id="usuario"
+                id="newusuario"
                 class="form-control"
                 placeholder="Usuario"
-                name="usuario"
+                name="newusuario"
                 type="text"
-                required
-            /></label>
-            <label for="pass"
+                autofocus
+                formControlName="newusuario"
+              />
+              <div *ngIf="NewUsuario?.errors && NewUsuario?.touched">
+                <p *ngIf="NewUsuario?.hasError('required')" class="text-danger">
+                  El usuario es obligatorio
+                </p>
+                <p
+                  *ngIf="NewUsuario?.hasError('minlength')"
+                  class="text-danger"
+                >
+                  El usuario es muy corto
+                </p>
+              </div></label
+            >
+            <label for="newpass"
               ><input
                 type="password"
                 class="form-control"
-                name="pass"
-                id="password"
-                required
+                name="newpass"
+                id="newpass"
                 placeholder="Ingresá tu contraseña"
-            /></label>
-            <label for="pass2"
+                formControlName="newpass"
+              />
+              <div *ngIf="NewPass?.errors && NewPass?.touched">
+                <p *ngIf="NewPass?.hasError('required')" class="text-danger">
+                  La contraseña es obligatoria
+                </p>
+                <p *ngIf="NewPass?.hasError('minlength')" class="text-danger">
+                  La contraseña debe tener al menos 6 caracteres
+                </p>
+                <p *ngIf="NewPass?.hasError('pattern')" class="text-danger">
+                  La contraseña debe tener al menos una minúscula, una mayúscula
+                  y un número
+                </p>
+              </div></label
+            >
+            <label for="newpass2"
               ><input
                 type="password"
                 class="form-control"
                 name="pass2"
                 id="password"
-                required
                 placeholder="Repetí la contraseña"
-            /></label>
+                formControlName="newpass2"
+              />
+              <div *ngIf="NewPass2?.errors && NewPass2?.touched">
+                <p *ngIf="NewPass2?.hasError('required')">
+                  La contraseña es obligatoria
+                </p>
+                <p *ngIf="NewPass2?.hasError('minlength')">
+                  La contraseña debe tener al menos 6 caracteres
+                </p>
+                <p *ngIf="NewPass2?.hasError('pattern')">
+                  La contraseña debe tener al menos una minúscula, una mayúscula
+                  y un número
+                </p>
+              </div></label
+            >
           </div>
         </div>
       </form>
