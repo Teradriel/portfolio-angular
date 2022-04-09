@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MensajesService } from '../../services/mensajes.service';
+import { Mensaje } from 'src/app/interfaces/mensaje';
+import { MensajesService } from 'src/app/services/mensajes.service';
 
 @Component({
   selector: 'app-contact',
@@ -25,39 +26,25 @@ export class ContactComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  get nombre() {
-    return this.form.get('nombre');
-  }
-
-  get email() {
-    return this.form.get('email');
-  }
-
-  get mensaje() {
-    return this.form.get('mensaje');
-  }
-
-  get telefono() {
-    return this.form.get('telefono');
-  }
-
-  get web() {
-    return this.form.get('web');
+  setMensaje(mensaje: Mensaje) {
+    this.form.patchValue({
+      nombre: mensaje.nombre,
+      email: mensaje.email,
+      telefono: mensaje.telefono,
+      web: mensaje.web,
+      mensaje: mensaje.mensaje,
+    });
   }
 
   onSubmit(event: Event) {
     event.preventDefault();
-    this.mensajesService
-      .enviarMensaje(
-        this.form.value.nombre,
-        this.form.value.email,
-        this.form.value.mensaje,
-        this.form.value.telefono,
-        this.form.value.web
-      )
-      .subscribe((mensaje) => {
-        console.log(mensaje);
+    if (this.form.valid) {
+      this.mensajesService.enviarMensaje(this.form.value).subscribe((data) => {
+        console.log('mensaje enviado');
         this.form.reset();
       });
+    } else {
+      console.log('form no valido');
+    }
   }
 }

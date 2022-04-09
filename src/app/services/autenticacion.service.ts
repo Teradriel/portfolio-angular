@@ -7,7 +7,6 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class AutenticacionService {
-  url = 'http://localhost:8081/';
   currentUserSubject: BehaviorSubject<any>;
   constructor(private http: HttpClient) {
     console.log('Servicio de autenticacion iniciado');
@@ -17,13 +16,15 @@ export class AutenticacionService {
   }
 
   IniciarSesion(usuario: string, pass: string): Observable<any> {
-    return this.http.post<any>(this.url + 'new/usr/', { usuario, pass }).pipe(
-      map((user) => {
-        sessionStorage.setItem('currentUser', JSON.stringify(user));
-        this.currentUserSubject.next(user);
-        return user;
-      })
-    );
+    return this.http
+      .post<any>('http://localhost:8081/new/usr/', { usuario, pass })
+      .pipe(
+        map((user) => {
+          sessionStorage.setItem('currentUser', JSON.stringify(user));
+          this.currentUserSubject.next(user);
+          return user;
+        })
+      );
   }
 
   get UsuarioAutenticado() {
