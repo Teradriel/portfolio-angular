@@ -1,5 +1,5 @@
 export interface Idioma {
-  id: number;
+  id: string;
   idioma: string;
   nivel: string;
 }

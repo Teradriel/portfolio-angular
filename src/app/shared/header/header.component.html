@@ -9,10 +9,16 @@
     <a routerLink="contact" ngbNavLink>Contactame</a>
   </li>
   <li [ngbNavItem]="4">
-    <a routerLink="login" ngbNavLink>Log-in</a>
+    <a routerLink="panel" ngbNavLink *ngIf="logged$ | async">Panel</a>
   </li>
   <li [ngbNavItem]="5">
-    <a routerLink="cv" ngbNavLink>Mi curriculum</a>
+    <a routerLink="cv" ngbNavLink *ngIf="logged$ | async">Mi curriculum</a>
+  </li>
+  <li [ngbNavItem]="6">
+    <a routerLink="login" ngbNavLink>Log-in</a>
+  </li>
+  <li [ngbNavItem]="7">
+    <a *ngIf="logged$ | async" (click)="onLogout()" ngbNavLink>Log-out</a>
   </li>
   <li ngbDropdown class="nav-item">
     <a href (click)="(false)" class="nav-link" ngbDropdownToggle>Más</a>

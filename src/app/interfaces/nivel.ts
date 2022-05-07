@@ -1,4 +1,4 @@
 export interface Nivel {
-  id: number;
+  id: string;
   nivel: number;
 }

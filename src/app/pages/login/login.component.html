@@ -1,18 +1,13 @@
 <div class="container">
-  <form
-    [formGroup]="form"
-    id="login"
-    (ngSubmit)="submitLogin($event)"
-    method="POST"
-  >
+  <form [formGroup]="form" id="login" (ngSubmit)="submitLogin($event)">
     <h3>Ingresar</h3>
     <fieldset>
       <input
         placeholder="Usuario"
         type="text"
         tabindex="1"
-        autofocus
         formControlName="usuario"
+        autocomplete="username"
       />
       <div *ngIf="Usuario?.errors && Usuario?.touched">
         <p *ngIf="Usuario?.hasError('required')" class="text-danger">
@@ -29,6 +24,7 @@
         type="password"
         tabindex="2"
         formControlName="pass"
+        autocomplete="current-password"
       />
       <div *ngIf="Pass?.errors && Pass?.touched">
         <p *ngIf="Pass?.hasError('required')" class="text-danger">
@@ -76,18 +72,20 @@
       ></button>
     </div>
     <div class="modal-body">
-      <form [formGroup]="newform" id="crear_cuenta" action="" method="POST">
+      <form
+        [formGroup]="newform"
+        (ngSubmit)="submitRegister($event)"
+        id="crear_cuenta"
+      >
         <div class="mb-3">
           <div class="input-group">
             <label for="newusuario">
               <input
-                id="newusuario"
-                class="form-control"
                 placeholder="Usuario"
                 name="newusuario"
                 type="text"
-                autofocus
                 formControlName="newusuario"
+                autocomplete="new-username"
               />
               <div *ngIf="NewUsuario?.errors && NewUsuario?.touched">
                 <p *ngIf="NewUsuario?.hasError('required')" class="text-danger">
@@ -104,11 +102,10 @@
             <label for="newpass"
               ><input
                 type="password"
-                class="form-control"
                 name="newpass"
-                id="newpass"
                 placeholder="Ingresá tu contraseña"
                 formControlName="newpass"
+                autocomplete="new-password"
               />
               <div *ngIf="NewPass?.errors && NewPass?.touched">
                 <p *ngIf="NewPass?.hasError('required')" class="text-danger">
@@ -126,11 +123,10 @@
             <label for="newpass2"
               ><input
                 type="password"
-                class="form-control"
-                name="pass2"
-                id="password"
+                name="newpass2"
                 placeholder="Repetí la contraseña"
                 formControlName="newpass2"
+                autocomplete="new-password"
               />
               <div *ngIf="NewPass2?.errors && NewPass2?.touched">
                 <p *ngIf="NewPass2?.hasError('required')">
@@ -145,19 +141,37 @@
                 </p>
               </div></label
             >
+            <label for="newemail">
+              <input
+                placeholder="E-mail"
+                name="newemail"
+                type="email"
+                formControlName="newemail"
+                autocomplete="email"
+              />
+              <div *ngIf="NewEmail?.errors && NewEmail?.touched">
+                <p *ngIf="NewEmail?.hasError('required')" class="text-danger">
+                  El e-mail es obligatorio
+                </p>
+                <p *ngIf="NewEmail?.hasError('email')" class="text-danger">
+                  El formato de un e-mail es incorrecto. (ejemplo@ejemplo.com)
+                </p>
+              </div></label
+            >
           </div>
         </div>
+        <div class="modal-footer">
+          <button
+            type="submit"
+            name="submit"
+            id="register_submit"
+            data-submit="Enviando información"
+            (click)="modal.close('Save click')"
+          >
+            Crear Cuenta
+          </button>
+        </div>
       </form>
-    </div>
-    <div class="modal-footer">
-      <button
-        type="submit"
-        class="btn"
-        id="crear_cuenta"
-        (click)="modal.close('Save click')"
-      >
-        Crear
-      </button>
     </div>
   </ng-template>
   <fieldset>

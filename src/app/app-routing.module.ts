@@ -1,4 +1,4 @@
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CvComponent } from './pages/cv/cv.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -12,9 +12,9 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'cv', component: CvComponent /* canActivate: [GuardGuard] */ },
+  { path: 'cv', component: CvComponent, canActivate: [GuardGuard] },
   { path: 'login', component: LoginComponent },
-  { path: 'panel', component: PanelComponent /* canActivate: [GuardGuard] */ },
+  { path: 'panel', component: PanelComponent, canActivate: [GuardGuard] },
   { path: '**', pathMatch: 'full', redirectTo: 'home' },
 ];
 

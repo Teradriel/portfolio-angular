@@ -13,19 +13,23 @@ import { AutenticacionService } from '../services/autenticacion.service';
 })
 export class InterceptorService implements HttpInterceptor {
   constructor(private autenticacionService: AutenticacionService) {}
+
   intercept(
     req: HttpRequest<any>,
+
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     var currentUser = this.autenticacionService.UsuarioAutenticado;
     if (currentUser && currentUser.token) {
-      req = req.clone({
-        setHeaders: {
-          Authorization: `Bearer ${currentUser.token}`,
-        },
+      const q = req.clone({
+        headers: req.headers.set(
+          'Authorization',
+          'Bearer ' + currentUser.token
+        ),
       });
+      return next.handle(q);
+    } else {
+      return next.handle(req);
     }
-    console.log('Interceptor funcionando: ' + JSON.stringify(currentUser));
-    return next.handle(req);
   }
 }

@@ -5,7 +5,7 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
-import { Observable } from 'rxjs';
+import { map, Observable, take } from 'rxjs';
 import { AutenticacionService } from './autenticacion.service';
 import { Router } from '@angular/router';
 
@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class GuardGuard implements CanActivate {
+  /* public guardLogged = false; */
   constructor(
     private autenticacionService: AutenticacionService,
     private rutas: Router
@@ -25,14 +26,26 @@ export class GuardGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    let currentUser = this.autenticacionService.UsuarioAutenticado;
+    return this.autenticacionService.Logged.pipe(
+      take(1),
+      map((Logged: boolean) => {
+        if (!Logged) {
+          this.rutas.navigate(['/login']);
+          return false;
+        } else {
+          return true;
+        }
+      })
+    );
+    /* let currentUser = this.autenticacionService.UsuarioAutenticado;
     if (currentUser && currentUser.accessToken) {
-      console.log(currentUser.accessToken);
+       this.guardLogged = true; 
       this.rutas.navigate(['panel']);
+      console.log(currentUser.accessToken);
       return true;
     } else {
       this.rutas.navigate(['login']);
-      return false;
-    }
+      this.guardLogged = false; 
+      return false;*/
   }
 }

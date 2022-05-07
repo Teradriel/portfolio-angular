@@ -5,15 +5,14 @@ import { Intereses } from './intereses';
 import { Skill } from './skill';
 import { Experiencia } from './experiencia';
 import { Mensaje } from './mensaje';
+import { User } from './user';
 
 export interface Persona {
-  id: number;
+  id: string;
   nombre: string;
   apellido: string;
-  email: string;
+  /*   email: string; */
   telefono: string;
-  usuario: string;
-  password: string;
   pais: string;
   ciudad: string;
   direccion: string;
@@ -22,6 +21,7 @@ export interface Persona {
   estadoCivil: string;
   imagen: string;
   intro: string;
+  user: User[];
   educacion: Educacion[];
   idiomas: Idioma[];
   intereses: Intereses[];

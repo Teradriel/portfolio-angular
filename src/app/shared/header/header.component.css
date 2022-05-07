@@ -22,3 +22,9 @@ ul {
   color: #fff;
   background-color: #42a8c0;
 }
+
+::ng-deep .nav-pills:hover .nav-link.active:hover,
+::ng-deep .nav-pills:hover .show > .nav-link:hover {
+  background-color: #2d7788;
+  transition: background-color 0.3s ease-in-out;
+}

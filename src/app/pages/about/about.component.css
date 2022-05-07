@@ -10,3 +10,24 @@ p {
 q {
   font-size: small;
 }
+
+.rectangle {
+  background-color: #2d7788;
+  margin-bottom: 3rem;
+  background-position: 0%;
+}
+
+.contenedor {
+  width: 100%;
+  height: 15rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.texto {
+  color: aliceblue;
+  text-align: center;
+  align-self: flex-end;
+  bottom: 2rem;
+}

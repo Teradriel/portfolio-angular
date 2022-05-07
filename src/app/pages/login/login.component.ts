@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit {
           Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$'),
         ],
       ],
+      newemail: ['', [Validators.required, Validators.email]],
     });
   }
 
@@ -76,13 +77,29 @@ export class LoginComponent implements OnInit {
     return this.newform.get('newpass2');
   }
 
+  get NewEmail() {
+    return this.newform.get('newemail');
+  }
+
   submitLogin(event: Event) {
     event.preventDefault();
     this.autenticacionService
       .IniciarSesion(this.form.value.usuario, this.form.value.pass)
-      .subscribe((data) => {
-        console.log('Datos de usuario: ', JSON.stringify(data));
-        this.ruta.navigate(['cv']);
+      .subscribe(() => {
+        this.ruta.navigate(['panel']);
+      });
+  }
+
+  submitRegister(event: Event) {
+    event.preventDefault();
+    this.autenticacionService
+      .CrearCuenta(
+        this.newform.value.newusuario,
+        this.newform.value.newpass,
+        this.newform.value.newemail
+      )
+      .subscribe(() => {
+        this.ruta.navigate(['login']);
       });
   }
 }

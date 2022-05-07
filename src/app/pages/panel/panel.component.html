@@ -1,1 +1,596 @@
-<p>panel works!</p>
+<section>
+  <div class="contenedor rectangle">
+    <div class="texto">
+      <h1 class="panel-title">Panel de usuario</h1>
+      <h3>Tus datos</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="panel-heading">
+      <div class="panel-body">
+        <div>
+          <div>
+            <strong>Nombre:</strong>
+            <div ngbDropdown class="d-inline-block">
+              <button
+                type="button"
+                class="btn btn-light"
+                id="editarNombre"
+                ngbDropdownToggle
+              >
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+              <div ngbDropdownMenu aria-labelledby="editarNombre">
+                <form
+                  class="mx-2 my-auto"
+                  (ngSubmit)="onNombre($event)"
+                  [formGroup]="formNombre"
+                >
+                  <div class="mb-3">
+                    <label for="nombre">Nombre</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="nombre"
+                      placeholder="Nombre"
+                      formControlName="nombre"
+                      autocomplete="given-name"
+                    />
+                  </div>
+                  <button type="submit" class="btn btn-primary">
+                    Editar nombre
+                  </button>
+                </form>
+              </div>
+            </div>
+            <p>{{ persona.nombre }}</p>
+          </div>
+          <div>
+            <strong>Apellido:</strong>
+            <div ngbDropdown class="d-inline-block">
+              <button
+                type="button"
+                class="btn btn-light"
+                id="editarApellido"
+                ngbDropdownToggle
+              >
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+              <div ngbDropdownMenu aria-labelledby="editarApellido">
+                <form
+                  class="mx-2 my-auto"
+                  (ngSubmit)="onApellido($event)"
+                  [formGroup]="formApellido"
+                >
+                  <div class="mb-3">
+                    <label for="apellido">Apellido</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="apellido"
+                      placeholder="Apellido"
+                      formControlName="apellido"
+                      autocomplete="family-name"
+                    />
+                  </div>
+                  <button type="submit" class="btn btn-primary">
+                    Editar apellido
+                  </button>
+                </form>
+              </div>
+            </div>
+            <p>{{ persona.apellido }}</p>
+          </div>
+          <div>
+            <strong>E-mail:</strong>
+            <!-- <div ngbDropdown class="d-inline-block">
+              <button
+                type="button"
+                class="btn btn-light"
+                id="editarEmail"
+                ngbDropdownToggle
+              >
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+              <div ngbDropdownMenu aria-labelledby="editarEmail">
+                <form
+                  class="mx-2 my-auto"
+                  (ngSubmit)="onEmail($event)"
+                  [formGroup]="formEmail"
+                >
+                  <div class="mb-3">
+                    <label for="email">E-mail</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="email"
+                      placeholder="E-mail"
+                      formControlName="email"
+                      autocomplete="email"
+                    />
+                  </div>
+                  <button type="submit" class="btn btn-primary">
+                    Editar e-mail
+                  </button>
+                </form>
+              </div>
+            </div> -->
+            <p><!-- {{ persona.email }} -->un email</p>
+          </div>
+          <div>
+            <strong>Teléfono</strong>
+            <div ngbDropdown class="d-inline-block">
+              <button
+                type="button"
+                class="btn btn-light"
+                id="editarTelefono"
+                ngbDropdownToggle
+              >
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+              <div ngbDropdownMenu aria-labelledby="editarTelefono">
+                <form
+                  class="mx-2 my-auto"
+                  (ngSubmit)="onTelefono($event)"
+                  [formGroup]="formTelefono"
+                >
+                  <div class="mb-3">
+                    <label for="telefono">Teléfono</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="telefono"
+                      placeholder="Teléfono"
+                      formControlName="telefono"
+                      autocomplete="tel"
+                    />
+                  </div>
+                  <button type="submit" class="btn btn-primary">
+                    Editar teléfono
+                  </button>
+                </form>
+              </div>
+            </div>
+            <p>{{ persona.telefono }}</p>
+          </div>
+          <div>
+            <strong>Usuario:</strong>
+            <!-- <div ngbDropdown class="d-inline-block">
+              <button
+                type="button"
+                class="btn btn-light"
+                id="editarUsuario"
+                ngbDropdownToggle
+              >
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+              <div ngbDropdownMenu aria-labelledby="editarUsuario">
+                <form
+                  class="mx-2 my-auto"
+                  (ngSubmit)="onUsuario($event)"
+                  [formGroup]="formUsuario"
+                >
+                  <div class="mb-3">
+                    <label for="usuario">Usuario</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="usuario"
+                      placeholder="Usuario"
+                      formControlName="usuario"
+                      autocomplete="username"
+                    />
+                  </div>
+                  <button type="submit" class="btn btn-primary">
+                    Editar usuario
+                  </button>
+                </form>
+              </div>
+            </div> -->
+            <p><!-- {{ persona.usuario }} -->Un usuario</p>
+          </div>
+          <div>
+            <strong>País:</strong>
+            <div ngbDropdown class="d-inline-block">
+              <button
+                type="button"
+                class="btn btn-light"
+                id="editarPais"
+                ngbDropdownToggle
+              >
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+              <div ngbDropdownMenu aria-labelledby="editarPais">
+                <form
+                  class="mx-2 my-auto"
+                  (ngSubmit)="onPais($event)"
+                  [formGroup]="formPais"
+                >
+                  <div class="mb-3">
+                    <label for="pais">País</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="pais"
+                      placeholder="País"
+                      formControlName="pais"
+                      autocomplete="country-name"
+                    />
+                  </div>
+                  <button type="submit" class="btn btn-primary">
+                    Editar país
+                  </button>
+                </form>
+              </div>
+            </div>
+            <p>{{ persona.pais }}</p>
+          </div>
+          <div>
+            <strong>Ciudad</strong>
+            <div ngbDropdown class="d-inline-block">
+              <button
+                type="button"
+                class="btn btn-light"
+                id="editarCiudad"
+                ngbDropdownToggle
+              >
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+              <div ngbDropdownMenu aria-labelledby="editarCiudad">
+                <form
+                  class="mx-2 my-auto"
+                  (ngSubmit)="onCiudad($event)"
+                  [formGroup]="formCiudad"
+                >
+                  <div class="mb-3">
+                    <label for="ciudad">Ciudad</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="ciudad"
+                      placeholder="Ciudad"
+                      formControlName="ciudad"
+                      autocomplete="city-name"
+                    />
+                  </div>
+                  <button type="submit" class="btn btn-primary">
+                    Editar país
+                  </button>
+                </form>
+              </div>
+            </div>
+            <p>{{ persona.ciudad }}</p>
+          </div>
+          <div>
+            <strong>Dirección:</strong>
+            <div ngbDropdown class="d-inline-block">
+              <button
+                type="button"
+                class="btn btn-light"
+                id="editarDireccion"
+                ngbDropdownToggle
+              >
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+              <div ngbDropdownMenu aria-labelledby="editarDireccion">
+                <form
+                  class="mx-2 my-auto"
+                  (ngSubmit)="onDireccion($event)"
+                  [formGroup]="formDireccion"
+                >
+                  <div class="mb-3">
+                    <label for="direccion">Dirección</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="direccion"
+                      placeholder="Dirección"
+                      formControlName="direccion"
+                      autocomplete="address-line1"
+                    />
+                  </div>
+                  <button type="submit" class="btn btn-primary">
+                    Editar dirección
+                  </button>
+                </form>
+              </div>
+            </div>
+            <p>{{ persona.direccion }}</p>
+          </div>
+          <div>
+            <strong>Fecha de Nacimiento:</strong>
+            <div ngbDropdown class="d-inline-block">
+              <button
+                type="button"
+                class="btn btn-light"
+                id="editarFechaNacimiento"
+                ngbDropdownToggle
+              >
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+              <div ngbDropdownMenu aria-labelledby="editarFechaNacimiento">
+                <form
+                  class="mx-2 my-auto"
+                  (ngSubmit)="onFechaNacimiento($event)"
+                  [formGroup]="formFechaNacimiento"
+                >
+                  <div class="mb-3">
+                    <label for="fechanacimiento">Fecha de nacimiento</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="fechanacimiento"
+                      placeholder="Fecha de nacimiento"
+                      formControlName="fechaNacimiento"
+                      autocomplete="bday"
+                    />
+                  </div>
+                  <button type="submit" class="btn btn-primary">
+                    Editar fecha de nacimiento
+                  </button>
+                </form>
+              </div>
+            </div>
+            <p>{{ persona.fechaNacimiento }}</p>
+          </div>
+          <div>
+            <strong>Sexo:</strong>
+            <div ngbDropdown class="d-inline-block">
+              <button
+                type="button"
+                class="btn btn-light"
+                id="editarSexo"
+                ngbDropdownToggle
+              >
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+              <div ngbDropdownMenu aria-labelledby="editarSexo">
+                <form
+                  class="mx-2 my-auto"
+                  (ngSubmit)="onSexo($event)"
+                  [formGroup]="formSexo"
+                >
+                  <div class="mb-3">
+                    <label for="sexo">Sexo</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="sexo"
+                      placeholder="Sexo"
+                      formControlName="sexo"
+                      autocomplete="sex"
+                    />
+                  </div>
+                  <button type="submit" class="btn btn-primary">
+                    Editar sexo
+                  </button>
+                </form>
+              </div>
+            </div>
+            <p>{{ persona.sexo }}</p>
+          </div>
+          <div>
+            <strong>Estado Civil:</strong>
+            <div ngbDropdown class="d-inline-block">
+              <button
+                type="button"
+                class="btn btn-light"
+                id="editarEstadoCivil"
+                ngbDropdownToggle
+              >
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+              <div ngbDropdownMenu aria-labelledby="editarEstadoCivil">
+                <form
+                  class="mx-2 my-auto"
+                  (ngSubmit)="onEstadoCivil($event)"
+                  [formGroup]="formEstadoCivil"
+                >
+                  <div class="mb-3">
+                    <label for="estadocivil">Estado Civil</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="estadocivil"
+                      placeholder="Estado Civil"
+                      formControlName="estadoCivil"
+                    />
+                  </div>
+                  <button type="submit" class="btn btn-primary">
+                    Editar estado civil
+                  </button>
+                </form>
+              </div>
+            </div>
+            <p>{{ persona.estadoCivil }}</p>
+          </div>
+          <div>
+            <strong>Imagen</strong>
+            <div ngbDropdown class="d-inline-block">
+              <button
+                type="button"
+                class="btn btn-light"
+                id="editarImagen"
+                ngbDropdownToggle
+              >
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+              <div ngbDropdownMenu aria-labelledby="editarImagen">
+                <form
+                  class="mx-2 my-auto"
+                  (ngSubmit)="onImagen($event)"
+                  [formGroup]="formImagen"
+                >
+                  <div class="mb-3">
+                    <label for="imagen">Imagen</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Imagen"
+                      id="imagen"
+                      formControlName="imagen"
+                    />
+                  </div>
+                  <button type="submit" class="btn btn-primary">
+                    Editar imagen
+                  </button>
+                </form>
+              </div>
+            </div>
+            <p>{{ persona.imagen }}</p>
+          </div>
+          <div>
+            <strong>Presentación personal y profesional:</strong>
+            <div ngbDropdown class="d-inline-block">
+              <button
+                type="button"
+                class="btn btn-light"
+                id="editarIntro"
+                ngbDropdownToggle
+              >
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+              <div ngbDropdownMenu aria-labelledby="editarIntro">
+                <form
+                  class="mx-2 my-auto"
+                  (ngSubmit)="onIntro($event)"
+                  [formGroup]="formIntro"
+                >
+                  <div class="mb-3">
+                    <label for="intro"
+                      >Presentación personal y profesional</label
+                    >
+                    <textarea
+                      type="text"
+                      class="form-control"
+                      id="intro"
+                      placeholder="Presentación personal y profesional"
+                      formControlName="intro"
+                    ></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-primary">
+                    Editar presentación personal y profesional
+                  </button>
+                </form>
+              </div>
+            </div>
+            <p>{{ persona.intro }}</p>
+          </div>
+          <strong>Educación:</strong>
+          <ul *ngFor="let educacion of persona.educacion">
+            <li>
+              Titulo:
+              <p>{{ educacion.titulo }}</p>
+            </li>
+            <li>
+              Fecha de inicio:
+              <p>{{ educacion.fechaInicio }}</p>
+            </li>
+            <li>
+              Fecha de finalización:
+              <p>{{ educacion.fechaFin }}</p>
+            </li>
+            <li>
+              Institución:
+              <p>{{ educacion.institucion }}</p>
+            </li>
+          </ul>
+          <strong>Idiomas:</strong>
+          <ul *ngFor="let idioma of persona.idiomas">
+            <li>
+              Idioma:
+              <p>{{ idioma.idioma }}</p>
+            </li>
+            <li>
+              Nivel:
+              <p>{{ idioma.nivel }}</p>
+            </li>
+          </ul>
+          <strong>Intereses:</strong>
+          <ul *ngFor="let interes of persona.intereses">
+            <li>
+              Interes:
+              <p>{{ interes.interes }}</p>
+            </li>
+          </ul>
+          <strong>Experiencia:</strong>
+          <ul *ngFor="let experiencia of persona.experiencias">
+            <li>
+              Empresa:
+              <p>{{ experiencia.empresa }}</p>
+            </li>
+            <li>
+              Ocupación:
+              <p>{{ experiencia.titulo }}</p>
+            </li>
+            <li>
+              Descripción:
+              <p>{{ experiencia.descripcion }}</p>
+            </li>
+            <li>
+              Fecha de inicio:
+              <p>{{ experiencia.fechaInicio }}</p>
+            </li>
+            <li>
+              Fecha de finalización:
+              <p>{{ experiencia.fechaFin }}</p>
+            </li>
+          </ul>
+          <strong>Habilidades:</strong>
+          <ul *ngFor="let skill of persona.skills">
+            <li>
+              Habilidad:
+              <p>{{ skill.skill }}</p>
+            </li>
+            <li>
+              Nivel:
+              <p>{{ skill.nivel }}</p>
+            </li>
+          </ul>
+          <strong>Cursos:</strong>
+          <ul *ngFor="let curso of persona.cursos">
+            <li>
+              Título:
+              <p>{{ curso.titulo }}</p>
+            </li>
+            <li>
+              Institución:
+              <p>{{ curso.lugar }}</p>
+            </li>
+            <li>
+              Descripción:
+              <p>{{ curso.descripcion }}</p>
+            </li>
+            <li>
+              Fecha:
+              <p>{{ curso.fecha }}</p>
+            </li>
+          </ul>
+          <strong>Mensajes enviados:</strong>
+          <ul *ngFor="let mensaje of persona.mensajes">
+            <li>
+              Nombre:
+              <p>{{ mensaje.nombre }}</p>
+            </li>
+            <li>
+              E-mail:
+              <p>{{ mensaje.email }}</p>
+            </li>
+            <li>
+              Teléfono:
+              <p>{{ mensaje.telefono }}</p>
+            </li>
+            <li>
+              Página Web:
+              <p>{{ mensaje.web }}</p>
+            </li>
+            <li>
+              Mensaje:
+              <p>{{ mensaje.mensaje }}</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
