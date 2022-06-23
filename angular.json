@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Portfolio-front-teradriel": {
+    "portfolio-front": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/portfolio-front-teradriel",
+            "outputPath": "dist/portfolio-front",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -69,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Portfolio-front-teradriel:build:production"
+              "browserTarget": "portfolio-front:build:production"
             },
             "development": {
-              "browserTarget": "Portfolio-front-teradriel:build:development"
+              "browserTarget": "portfolio-front:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -80,7 +80,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Portfolio-front-teradriel:build"
+            "browserTarget": "portfolio-front:build"
           }
         },
         "test": {
@@ -108,5 +108,5 @@
       "skipTests": true
     }
   },
-  "defaultProject": "Portfolio-front-teradriel"
+  "defaultProject": "portfolio-front"
 }

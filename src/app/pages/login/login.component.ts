@@ -29,26 +29,35 @@ export class LoginComponent implements OnInit {
         ],
       ],
     });
-    this.newform = this.formbuilder.group({
-      newusuario: ['', [Validators.required, Validators.minLength(3)]],
-      newpass: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(6),
-          Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$'),
+    this.newform = this.formbuilder.group(
+      {
+        newusuario: ['', [Validators.required, Validators.minLength(3)]],
+        newpass: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(6),
+            Validators.pattern(
+              '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$'
+            ),
+          ],
         ],
-      ],
-      newpass2: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(6),
-          Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$'),
+        newpass2: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(6),
+            Validators.pattern(
+              '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$'
+            ),
+          ],
         ],
-      ],
-      newemail: ['', [Validators.required, Validators.email]],
-    });
+        newemail: ['', [Validators.required, Validators.email]],
+      },
+      {
+        validator: this.ConfirmedValidator('newpass', 'newpass2'),
+      }
+    );
   }
 
   open(content: any) {
@@ -88,6 +97,24 @@ export class LoginComponent implements OnInit {
       .subscribe(() => {
         this.ruta.navigate(['panel']);
       });
+  }
+
+  ConfirmedValidator(controlName: string, matchingControlName: string) {
+    return (formGroup: FormGroup) => {
+      const control = formGroup.controls[controlName];
+      const matchingControl = formGroup.controls[matchingControlName];
+      if (
+        matchingControl.errors &&
+        !matchingControl.errors['confirmedValidator']
+      ) {
+        return;
+      }
+      if (control.value !== matchingControl.value) {
+        matchingControl.setErrors({ confirmedValidator: true });
+      } else {
+        matchingControl.setErrors(null);
+      }
+    };
   }
 
   submitRegister(event: Event) {

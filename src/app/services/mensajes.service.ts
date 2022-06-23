@@ -7,14 +7,12 @@ import { Mensaje } from '../interfaces/mensaje';
   providedIn: 'root',
 })
 export class MensajesService {
-  constructor(private http: HttpClient) {
-    console.log('Servicio de mensajes iniciado');
-  }
+  constructor(private http: HttpClient) {}
 
   enviarMensaje(mensaje: Mensaje): Observable<Mensaje> {
     console.log('Enviando mensaje');
     return this.http.post<Mensaje>(
-      'http://localhost:8081/new/message',
+      'http://localhost:8080/new/message',
       mensaje
     );
   }

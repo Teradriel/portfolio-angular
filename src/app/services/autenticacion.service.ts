@@ -7,29 +7,47 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class AutenticacionService {
-  private logged = new BehaviorSubject<boolean>(false);
+  private logged: BehaviorSubject<boolean>;
+  private notLogged: BehaviorSubject<boolean>;
   private currentUserSubject: BehaviorSubject<any>;
+  private url = 'http://localhost:8080/';
 
   get Logged() {
     return this.logged.asObservable();
   }
+
+  get NotLogged() {
+    return this.notLogged.asObservable();
+  }
+
   constructor(private http: HttpClient) {
-    console.log('Servicio de autenticacion iniciado');
     this.currentUserSubject = new BehaviorSubject<any>(
       JSON.parse(localStorage.getItem('currentUser') || '{}')
+    );
+    this.logged = new BehaviorSubject<boolean>(
+      JSON.parse(localStorage.getItem('currentUser') || '{}') !== {}
+    );
+    this.notLogged = new BehaviorSubject<boolean>(
+      JSON.parse(localStorage.getItem('currentUser') || '{}') === {}
     );
   }
 
   IniciarSesion(username: string, password: string): Observable<any> {
     return this.http
-      .post<any>('http://localhost:8081/api/auth/signin', {
+      .post<any>(this.url + 'api/auth/signin', {
         username,
         password,
       })
       .pipe(
         map((user) => {
+          this.http
+            .get<any>(this.url + 'user/' + user.id)
+            .subscribe((userData) => {
+              localStorage.setItem('userData', JSON.stringify(userData));
+            });
           localStorage.setItem('currentUser', JSON.stringify(user));
           this.logged.next(true);
+          this.notLogged.next(false);
           this.currentUserSubject.next(user);
           return user;
         })
@@ -42,7 +60,7 @@ export class AutenticacionService {
     newemail: string
   ): Observable<any> {
     return this.http
-      .post<any>('http://localhost:8081/api/auth/signup', {
+      .post<any>(this.url + 'api/auth/signup', {
         newuser,
         newpassword,
         newemail,
@@ -57,7 +75,9 @@ export class AutenticacionService {
 
   logout() {
     this.logged.next(false);
+    this.notLogged.next(true);
     localStorage.removeItem('currentUser');
+    localStorage.removeItem('userData');
   }
 
   get UsuarioAutenticado() {

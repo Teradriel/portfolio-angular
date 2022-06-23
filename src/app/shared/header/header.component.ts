@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AutenticacionService } from 'src/app/services/autenticacion.service';
 import { Router } from '@angular/router';
-import { GuardGuard } from '../../services/guard.guard';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -11,14 +10,15 @@ import { Observable } from 'rxjs';
 })
 export class HeaderComponent implements OnInit {
   logged$: Observable<boolean> | undefined;
+  notLogged$: Observable<boolean> | undefined;
   constructor(
-    private guard: GuardGuard,
     private autenticacionService: AutenticacionService,
     private ruta: Router
   ) {}
 
   ngOnInit(): void {
     this.logged$ = this.autenticacionService.Logged;
+    this.notLogged$ = this.autenticacionService.NotLogged;
   }
 
   onLogout() {

@@ -34,6 +34,7 @@ fieldset {
 
 #login input[type="text"],
 #login input[type="password"],
+#login input[type="email"],
 #login textarea {
   width: 100%;
   border: 1px solid #ccc;
@@ -44,6 +45,7 @@ fieldset {
 
 #login input[type="text"]:hover,
 #login input[type="password"]:hover,
+#login input[type="email"]:hover,
 #login textarea:hover {
   transition: border-color 0.3s ease-in-out;
   border: 1px solid #aaa;

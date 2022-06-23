@@ -75,7 +75,7 @@
       <form
         [formGroup]="newform"
         (ngSubmit)="submitRegister($event)"
-        id="crear_cuenta"
+        id="login"
       >
         <div class="mb-3">
           <div class="input-group">
@@ -129,13 +129,13 @@
                 autocomplete="new-password"
               />
               <div *ngIf="NewPass2?.errors && NewPass2?.touched">
-                <p *ngIf="NewPass2?.hasError('required')">
+                <p *ngIf="NewPass2?.hasError('required')" class="text-danger">
                   La contraseña es obligatoria
                 </p>
-                <p *ngIf="NewPass2?.hasError('minlength')">
+                <p *ngIf="NewPass2?.hasError('minlength')" class="text-danger">
                   La contraseña debe tener al menos 6 caracteres
                 </p>
-                <p *ngIf="NewPass2?.hasError('pattern')">
+                <p *ngIf="NewPass2?.hasError('pattern')" class="text-danger">
                   La contraseña debe tener al menos una minúscula, una mayúscula
                   y un número
                 </p>
@@ -151,7 +151,7 @@
               />
               <div *ngIf="NewEmail?.errors && NewEmail?.touched">
                 <p *ngIf="NewEmail?.hasError('required')" class="text-danger">
-                  El e-mail es obligatorio
+                  El e-mail es obligatorio!
                 </p>
                 <p *ngIf="NewEmail?.hasError('email')" class="text-danger">
                   El formato de un e-mail es incorrecto. (ejemplo@ejemplo.com)

@@ -15,7 +15,7 @@
     <a routerLink="cv" ngbNavLink *ngIf="logged$ | async">Mi curriculum</a>
   </li>
   <li [ngbNavItem]="6">
-    <a routerLink="login" ngbNavLink>Log-in</a>
+    <a routerLink="login" ngbNavLink *ngIf="notLogged$ | async">Log-in</a>
   </li>
   <li [ngbNavItem]="7">
     <a *ngIf="logged$ | async" (click)="onLogout()" ngbNavLink>Log-out</a>
