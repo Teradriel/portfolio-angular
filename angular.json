@@ -107,6 +107,5 @@
     "@schematics/angular:component": {
       "skipTests": true
     }
-  },
-  "defaultProject": "portfolio-front"
+  }
 }
