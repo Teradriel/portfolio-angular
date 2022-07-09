@@ -95,7 +95,7 @@ export class LoginComponent implements OnInit {
     this.autenticacionService
       .IniciarSesion(this.form.value.usuario, this.form.value.pass)
       .subscribe(() => {
-        this.ruta.navigate(['panel']);
+        this.ruta.navigate(['home']);
       });
   }
 

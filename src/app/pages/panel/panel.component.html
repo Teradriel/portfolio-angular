@@ -438,37 +438,37 @@
                 [formGroup]="formAddEducacion"
               >
                 <div class="mb-3">
-                  <label for="addEduTitulo">Titulo</label>
+                  <label for="titulo">Titulo</label>
                   <input
                     type="text"
                     class="form-control"
-                    id="addEduTitulo"
+                    id="titulo"
                     placeholder="Título"
-                    formControlName="addEduTitulo"
+                    formControlName="titulo"
                   />
-                  <label for="addEduFechaInicio">Fecha de inicio</label>
-                  <input
-                    type="date"
-                    class="form-control"
-                    id="addEduFechaInicio"
-                    placeholder="Fecha de inicio"
-                    formControlName="addEduFechaInicio"
-                  />
-                  <label for="addEduFechaFin">Fecha de fin</label>
-                  <input
-                    type="date"
-                    class="form-control"
-                    id="addEduFechaFin"
-                    placeholder="Fecha de fin"
-                    formControlName="addEduFechaFin"
-                  />
-                  <label for="addEduInstitucion">Institución</label>
+                  <label for="fechaInicio">Fecha de inicio (DD/MM/AAAA)</label>
                   <input
                     type="text"
                     class="form-control"
-                    id="addEduInstitucion"
+                    id="fechaInicio"
+                    placeholder="Fecha de inicio (DD/MM/AAAA)"
+                    formControlName="fechaInicio"
+                  />
+                  <label for="fechaFin">Fecha de fin (DD/MM/AAAA)</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="fechaFin"
+                    placeholder="Fecha de fin (DD/MM/AAAA)"
+                    formControlName="fechaFin"
+                  />
+                  <label for="institucion">Institución</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="institucion"
                     placeholder="Institución"
-                    formControlName="addEduInstitucion"
+                    formControlName="institucion"
                   />
                 </div>
                 <button type="submit" class="btn btn-primary">
@@ -477,7 +477,7 @@
               </form>
             </div>
           </div>
-          <div *ngFor="let edu of [educacion]">
+          <div *ngFor="let edu of estudios">
             <div ngbDropdown class="d-inline-block">
               <button
                 type="button"
@@ -498,7 +498,6 @@
                       type="text"
                       class="form-control"
                       id="deleteEduId"
-                      placeholder="Id"
                       formControlName="deleteEduId"
                       value="{{ edu.id }}"
                       readonly
@@ -526,37 +525,39 @@
                   [formGroup]="formEducacion"
                 >
                   <div class="mb-3">
-                    <label for="eduTitulo">Titulo</label>
+                    <label for="titulo">Titulo</label>
                     <input
                       type="text"
                       class="form-control"
-                      id="eduTitulo"
+                      id="titulo"
                       placeholder="Título"
-                      formControlName="eduTitulo"
+                      formControlName="titulo"
                     />
-                    <label for="eduFechaInicio">Fecha de inicio</label>
-                    <input
-                      type="date"
-                      class="form-control"
-                      id="eduFechaInicio"
-                      placeholder="Fecha de inicio"
-                      formControlName="eduFechaInicio"
-                    />
-                    <label for="eduFechaFin">Fecha de fin</label>
-                    <input
-                      type="date"
-                      class="form-control"
-                      id="eduFechaFin"
-                      placeholder="Fecha de fin"
-                      formControlName="eduFechaFin"
-                    />
-                    <label for="eduInstitucion">Institución</label>
+                    <label for="fechaInicio"
+                      >Fecha de inicio (DD/MM/AAAA)</label
+                    >
                     <input
                       type="text"
                       class="form-control"
-                      id="eduInstitucion"
+                      id="fechaInicio"
+                      placeholder="Fecha de inicio (DD/MM/AAAA)"
+                      formControlName="fechaInicio"
+                    />
+                    <label for="fechaFin">Fecha de fin (DD/MM/AAAA)</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="fechaFin"
+                      placeholder="Fecha de fin (DD/MM/AAAA)"
+                      formControlName="fechaFin"
+                    />
+                    <label for="institucion">Institución</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="institucion"
                       placeholder="Institución"
-                      formControlName="eduInstitucion"
+                      formControlName="institucion"
                     />
                   </div>
                   <button type="submit" class="btn btn-primary">
@@ -568,24 +569,24 @@
             <ul>
               <li>
                 Titulo:
-                <p>{{ edu.eduTitulo }}</p>
+                <p>{{ edu.titulo }}</p>
               </li>
               <li>
                 Fecha de inicio:
-                <p>{{ edu.eduFechaInicio }}</p>
+                <p>{{ edu.fechaInicio }}</p>
               </li>
               <li>
                 Fecha de finalización:
-                <p>{{ edu.eduFechaFin }}</p>
+                <p>{{ edu.fechaFin }}</p>
               </li>
               <li>
                 Institución:
-                <p>{{ edu.eduInstitucion }}</p>
+                <p>{{ edu.institucion }}</p>
               </li>
             </ul>
           </div>
           <strong>Idiomas:</strong>
-          <div *ngFor="let idioma of [idiomas]">
+          <div *ngFor="let idioma of idiomas">
             <ul>
               <li>
                 Idioma:
@@ -598,7 +599,7 @@
             </ul>
           </div>
           <strong>Intereses:</strong>
-          <div *ngFor="let interes of [intereses]">
+          <div *ngFor="let interes of intereses">
             <ul>
               <li>
                 Interes:
@@ -607,7 +608,7 @@
             </ul>
           </div>
           <strong>Experiencia:</strong>
-          <div *ngFor="let exp of [experiencias]">
+          <div *ngFor="let exp of experiencias">
             <ul>
               <li>
                 Empresa:
@@ -632,7 +633,7 @@
             </ul>
           </div>
           <strong>Habilidades:</strong>
-          <div *ngFor="let habilidad of [skills]">
+          <div *ngFor="let habilidad of skills">
             <ul>
               <li>
                 Habilidad:
@@ -645,7 +646,7 @@
             </ul>
           </div>
           <strong>Cursos:</strong>
-          <div *ngFor="let curso of [cursos]">
+          <div *ngFor="let curso of cursos">
             <ul>
               <li>
                 Título:
@@ -666,7 +667,7 @@
             </ul>
           </div>
           <strong>Mensajes enviados:</strong>
-          <div *ngFor="let mensaje of [mensajes]">
+          <div *ngFor="let mensaje of mensajes">
             <ul>
               <li>
                 Nombre:

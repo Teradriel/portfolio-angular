@@ -3,18 +3,23 @@
     <span class="icon-holder"><i class="fa-solid fa-briefcase"></i></span
     >Experiencia laboral
   </h2>
-  <div class="item">
+  <div class="item" *ngFor="let exp of experiencias">
     <div class="meta">
       <div class="upper-row">
-        <h3 class="job-title">Asistente de laboratorio y producción</h3>
-        <div class="time">Marzo 2021 - Marzo 2022</div>
+        <h3 class="job-title">
+          {{ exp.titulo }} Asistente de laboratorio y producción
+        </h3>
+        <div class="time">
+          {{ exp.fechaInicio }} Marzo 2021 - {{ exp.fechaFin }} Marzo 2022
+        </div>
       </div>
 
-      <div class="company">E-Chem SRL.</div>
+      <div class="company">{{ exp.empresa }} E-Chem SRL</div>
     </div>
 
     <div class="details">
       <p>
+        {{ exp.descripcion }}
         Laboratorio químico, laboratorio de materiales, control de calidad,
         producción por lotes, redacción de informes de clientes, uso de
         microscopio metalográfico.

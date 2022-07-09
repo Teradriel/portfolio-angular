@@ -23,12 +23,12 @@ export interface User {
   username: string;
   email: string;
   password: string;
-  /* educacion: Educacion;
-  idiomas: Idioma;
-  intereses: Intereses;
-  skills: Skill;
-  cursos: Curso;
-  experiencias: Experiencia;
-  mensajes: Mensaje;
-  rol: Rol; */
+  curso: Curso;
+  estudio: Educacion;
+  idioma: Idioma;
+  interes: Intereses;
+  skill: Skill;
+  exp: Experiencia;
+  mens: Mensaje;
+  roles: Rol;
 }

@@ -1,7 +1,10 @@
 <div class="languages-container container-block">
   <h2 class="container-block-title">Idiomas</h2>
   <ul class="list-unstyled languages-list">
-    <li>Español <span class="lang-desc">(Nativo)</span></li>
+    <li *ngFor="let idioma of idiomas">
+      {{ idioma.idioma }} Español
+      <span class="lang-desc"> ({{ idioma.nivel }}) (Nativo)</span>
+    </li>
     <li>Italiano <span class="lang-desc">(Profesional)</span></li>
     <li>Inglés <span class="lang-desc">(Profesional)</span></li>
   </ul>

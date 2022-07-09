@@ -3,20 +3,26 @@
     <span class="icon-holder"><i class="fa-brands fa-leanpub"></i></span>Cursos,
     Conferencias y Publicaciones
   </h2>
-  <div class="item">
+  <div class="item" *ngFor="let curso of cursos">
     <div class="meta">
       <div class="upper-row">
         <h3 class="job-title">
+          {{ curso.titulo }}
           Técnicas y operaciones en el laboratorio químico
         </h3>
-        <div class="time">Segundo semestre de 2007</div>
+        <div class="time">{{ curso.fecha }} Segundo semestre de 2007</div>
       </div>
 
-      <div class="company">Universidad Nacional de Córdoba</div>
+      <div class="company">
+        {{ curso.lugar }} Universidad Nacional de Córdoba
+      </div>
     </div>
 
     <div class="details">
-      <p>Técnicas y operaciones básicas de un laboratorio químico.</p>
+      <p>
+        {{ curso.descripcion }} Técnicas y operaciones básicas de un laboratorio
+        químico.
+      </p>
     </div>
   </div>
 
@@ -177,12 +183,12 @@
         <div class="time">2020</div>
       </div>
 
-      <div class="company">niversitat Autònoma de Barcelona - Coursera</div>
+      <div class="company">Universitat Autònoma de Barcelona - Coursera</div>
     </div>
 
     <div class="details">
       <p>
-        autorizado por la Universitat Autònoma de Barcelona y ofrecido a través
+        Autorizado por la Universitat Autònoma de Barcelona y ofrecido a través
         de Coursera.
       </p>
     </div>

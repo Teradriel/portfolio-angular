@@ -4,14 +4,14 @@
     >Habilidades y destrezas
   </h2>
   <div class="skillset">
-    <div class="item">
-      <h3 class="level-title">Teamwork</h3>
+    <div class="item" *ngFor="let skill of skills">
+      <h3 class="level-title">{{ skill.skill }} Teamwork</h3>
       <div class="progress level-bar">
         <div
           class="progress-bar theme-progress-bar"
           role="progressbar"
           style="width: 100%"
-          aria-valuenow="100"
+          attr.aria-valuenow=" {{ skill.nivel }} "
           aria-valuemin="0"
           aria-valuemax="100"
         ></div>

@@ -1,9 +1,11 @@
 <div class="education-container container-block">
   <h2 class="container-block-title">Educación</h2>
-  <div class="item">
-    <h4 class="degree">MSc en Ingenieria Química</h4>
-    <h5 class="meta">Università degli studi di Salerno</h5>
-    <div class="time">2015 - 2017</div>
+  <div class="item" *ngFor="let edu of estudios">
+    <h4 class="degree">{{ edu.titulo }} MSc en Ingenieria Química</h4>
+    <h5 class="meta">
+      {{ edu.institucion }} Università degli studi di Salerno
+    </h5>
+    <div class="time">{{ edu.fechaInicio }} 2015 - {{ edu.fechaFin }} 2017</div>
   </div>
 
   <div class="item">

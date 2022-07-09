@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { PersonaService } from './persona.service';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -11,6 +12,7 @@ export class AutenticacionService {
   private notLogged: BehaviorSubject<boolean>;
   private currentUserSubject: BehaviorSubject<any>;
   private url = 'http://localhost:8080/';
+  public currentId = '';
 
   get Logged() {
     return this.logged.asObservable();
@@ -20,7 +22,10 @@ export class AutenticacionService {
     return this.notLogged.asObservable();
   }
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private personaService: PersonaService
+  ) {
     this.currentUserSubject = new BehaviorSubject<any>(
       JSON.parse(localStorage.getItem('currentUser') || '{}')
     );
@@ -40,12 +45,11 @@ export class AutenticacionService {
       })
       .pipe(
         map((user) => {
-          this.http
-            .get<any>(this.url + 'user/' + user.id)
-            .subscribe((userData) => {
-              localStorage.setItem('userData', JSON.stringify(userData));
-            });
+          this.personaService.getPersona(user.id).subscribe((persona) => {
+            localStorage.setItem('userData', JSON.stringify(persona));
+          });
           localStorage.setItem('currentUser', JSON.stringify(user));
+          this.currentId = user.id;
           this.logged.next(true);
           this.notLogged.next(false);
           this.currentUserSubject.next(user);
@@ -76,6 +80,7 @@ export class AutenticacionService {
   logout() {
     this.logged.next(false);
     this.notLogged.next(true);
+    this.currentId = '';
     localStorage.removeItem('currentUser');
     localStorage.removeItem('userData');
   }

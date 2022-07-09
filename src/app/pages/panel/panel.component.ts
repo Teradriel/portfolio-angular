@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/interfaces/user';
 import { PersonaService } from 'src/app/services/persona.service';
 import { CursosService } from 'src/app/services/cursos.service';
@@ -16,7 +16,6 @@ import { Skill } from 'src/app/interfaces/skill';
 import { Curso } from 'src/app/interfaces/curso';
 import { Experiencia } from 'src/app/interfaces/experiencia';
 import { Mensaje } from 'src/app/interfaces/mensaje';
-import { Rol } from 'src/app/interfaces/rol';
 
 @Component({
   selector: 'app-panel',
@@ -45,81 +44,51 @@ export class PanelComponent implements OnInit {
   formExperiencias: FormGroup;
   formMensajes: FormGroup;
 
+  estudios: Educacion[] = [];
+  idiomas: Idioma[] = [];
+  intereses: Intereses[] = [];
+  skills: Skill[] = [];
+  cursos: Curso[] = [];
+  experiencias: Experiencia[] = [];
+  mensajes: Mensaje[] = [];
+
   dataUser: User = {
-    id: JSON.parse(localStorage.getItem('currentUser') || '{}').id,
-    nombre: JSON.parse(localStorage.getItem('userData') || '{}').nombre,
-    apellido: JSON.parse(localStorage.getItem('userData') || '{}').apellido,
-    telefono: JSON.parse(localStorage.getItem('userData') || '{}').telefono,
-    pais: JSON.parse(localStorage.getItem('userData') || '{}').pais,
-    ciudad: JSON.parse(localStorage.getItem('userData') || '{}').ciudad,
-    direccion: JSON.parse(localStorage.getItem('userData') || '{}').direccion,
-    fechaNacimiento: JSON.parse(localStorage.getItem('userData') || '{}')
-      .fechaNacimiento,
-    sexo: JSON.parse(localStorage.getItem('userData') || '{}').sexo,
-    estadoCivil: JSON.parse(localStorage.getItem('userData') || '{}')
-      .estadoCivil,
-    imagen: JSON.parse(localStorage.getItem('userData') || '{}').imagen,
-    intro: JSON.parse(localStorage.getItem('userData') || '{}').intro,
-    username: JSON.parse(localStorage.getItem('currentUser') || '{}').username,
-    email: JSON.parse(localStorage.getItem('currentUser') || '{}').email,
-    password: JSON.parse(localStorage.getItem('currentUser') || '{}').password,
-  };
-  educacion: Educacion = {
-    id: JSON.parse(localStorage.getItem('userData') || '{}').estudio.id,
-    eduFechaInicio: JSON.parse(localStorage.getItem('userData') || '{}').estudio
-      .eduFechaInicio,
-    eduFechaFin: JSON.parse(localStorage.getItem('userData') || '{}').estudio
-      .eduFechaFin,
-    eduTitulo: JSON.parse(localStorage.getItem('userData') || '{}').estudio
-      .eduTitulo,
-    eduInstitucion: JSON.parse(localStorage.getItem('userData') || '{}').estudio
-      .eduInstitucion,
-  };
-  idiomas: Idioma = {
-    id: JSON.parse(localStorage.getItem('userData') || '{}').idioma.id,
-    idioma: JSON.parse(localStorage.getItem('userData') || '{}').idioma.idioma,
-    nivel: JSON.parse(localStorage.getItem('userData') || '{}').idioma.nivel,
-  };
-  intereses: Intereses = {
-    id: JSON.parse(localStorage.getItem('userData') || '{}').interes.id,
-    interes: JSON.parse(localStorage.getItem('userData') || '{}').interes
-      .interes,
-  };
-  skills: Skill = {
-    id: JSON.parse(localStorage.getItem('userData') || '{}').skill.id,
-    skill: JSON.parse(localStorage.getItem('userData') || '{}').skill.skill,
-    nivel: JSON.parse(localStorage.getItem('userData') || '{}').skill.nivel,
-  };
-  cursos: Curso = {
-    id: JSON.parse(localStorage.getItem('userData') || '{}').curso.id,
-    titulo: JSON.parse(localStorage.getItem('userData') || '{}').curso.titulo,
-    fecha: JSON.parse(localStorage.getItem('userData') || '{}').curso.fecha,
-    descripcion: JSON.parse(localStorage.getItem('userData') || '{}').curso
-      .descripcion,
-    lugar: JSON.parse(localStorage.getItem('userData') || '{}').curso.lugar,
-  };
-  experiencias: Experiencia = {
-    id: JSON.parse(localStorage.getItem('userData') || '{}').exp.id,
-    titulo: JSON.parse(localStorage.getItem('userData') || '{}').exp.titulo,
-    fechaInicio: JSON.parse(localStorage.getItem('userData') || '{}').exp
-      .fechaInicio,
-    fechaFin: JSON.parse(localStorage.getItem('userData') || '{}').exp.fechaFin,
-    empresa: JSON.parse(localStorage.getItem('userData') || '{}').exp.empresa,
-    descripcion: JSON.parse(localStorage.getItem('userData') || '{}').exp
-      .descripcion,
-  };
-  mensajes: Mensaje = {
-    id: JSON.parse(localStorage.getItem('userData') || '{}').mens.id,
-    web: JSON.parse(localStorage.getItem('userData') || '{}').mens.web,
-    email: JSON.parse(localStorage.getItem('userData') || '{}').mens.email,
-    telefono: JSON.parse(localStorage.getItem('userData') || '{}').mens
-      .telefono,
-    nombre: JSON.parse(localStorage.getItem('userData') || '{}').mens.nombre,
-    mensaje: JSON.parse(localStorage.getItem('userData') || '{}').mens.mensaje,
-  };
-  rol: Rol = {
-    id: JSON.parse(localStorage.getItem('userData') || '{}').roles.id,
-    name: JSON.parse(localStorage.getItem('userData') || '{}').roles.name,
+    id: '',
+    nombre: '',
+    apellido: '',
+    telefono: '',
+    pais: '',
+    ciudad: '',
+    direccion: '',
+    fechaNacimiento: '',
+    sexo: '',
+    estadoCivil: '',
+    intro: '',
+    imagen: '',
+    username: '',
+    password: '',
+    email: '',
+    estudio: {
+      id: '',
+      titulo: '',
+      fechaFin: '',
+      fechaInicio: '',
+      institucion: '',
+    },
+    idioma: { id: '', idioma: '', nivel: '' },
+    interes: { id: '', interes: '' },
+    skill: { id: '', skill: '', nivel: 0 },
+    curso: { id: '', titulo: '', fecha: '', lugar: '', descripcion: '' },
+    exp: {
+      id: '',
+      titulo: '',
+      fechaFin: '',
+      fechaInicio: '',
+      empresa: '',
+      descripcion: '',
+    },
+    mens: { id: '', mensaje: '', web: '', nombre: '', telefono: '', email: '' },
+    roles: { id: '', name: '' },
   };
 
   constructor(
@@ -214,17 +183,17 @@ export class PanelComponent implements OnInit {
     });
 
     this.formEducacion = this.formbuilder.group({
-      eduTitulo: ['', Validators.required],
-      eduFechaInicio: ['', Validators.required],
-      eduFechaFin: ['', Validators.required],
-      eduInstitucion: ['', Validators.required],
+      titulo: ['', Validators.required],
+      fechaInicio: ['', Validators.required],
+      fechaFin: ['', Validators.required],
+      institucion: ['', Validators.required],
     });
 
     this.formAddEducacion = this.formbuilder.group({
-      addEduTitulo: ['', Validators.required],
-      addEduFechaInicio: ['', Validators.required],
-      addEduFechaFin: ['', Validators.required],
-      addEduInstitucion: ['', Validators.required],
+      titulo: ['', Validators.required],
+      fechaInicio: ['', Validators.required],
+      fechaFin: ['', Validators.required],
+      institucion: ['', Validators.required],
     });
 
     this.formDeleteEducacion = this.formbuilder.group({
@@ -270,10 +239,56 @@ export class PanelComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    /* const user = JSON.parse(localStorage.getItem('currentUser') || '{}');
-    this.personaService.getPersona(user.id).subscribe((userData) => {
-      localStorage.setItem('userData', JSON.stringify(userData));
-    }); */
+    this.dataUser = JSON.parse(localStorage.getItem('userData') || '{}');
+    this.listaEstudios();
+    this.listaIdiomas();
+    this.listaIntereses();
+    this.listaSkills();
+    this.listaCursos();
+    this.listaExperiencias();
+    this.listaMensajes();
+  }
+
+  listaEstudios(): void {
+    this.educacionService.getAllEducacion().subscribe((data) => {
+      this.estudios = data;
+    });
+  }
+
+  listaExperiencias(): void {
+    this.experienciasService.getAllExp().subscribe((data) => {
+      this.experiencias = data;
+    });
+  }
+
+  listaIdiomas(): void {
+    this.idiomasService.getAllIdiomas().subscribe((data) => {
+      this.idiomas = data;
+    });
+  }
+
+  listaIntereses(): void {
+    this.interesesService.getAllIntereses().subscribe((data) => {
+      this.intereses = data;
+    });
+  }
+
+  listaSkills(): void {
+    this.skillsService.getAllSkills().subscribe((data) => {
+      this.skills = data;
+    });
+  }
+
+  listaCursos(): void {
+    this.cursosService.getAllCursos().subscribe((data) => {
+      this.cursos = data;
+    });
+  }
+
+  listaMensajes(): void {
+    this.mensajesService.getAllMensajes().subscribe((data) => {
+      this.mensajes = data;
+    });
   }
 
   onNombre(event: Event) {
@@ -377,9 +392,8 @@ export class PanelComponent implements OnInit {
   }
 
   onEducacion(event: Event) {
-    this.educacion = this.formEducacion.value.educacion;
     this.educacionService
-      .editarEducacion(this.educacion, this.educacion.id)
+      .editarEducacion(this.formEducacion.value, this.formEducacion.value.id)
       .subscribe(() => {
         this.personaService
           .getPersona(this.dataUser.id)
@@ -390,19 +404,28 @@ export class PanelComponent implements OnInit {
   }
 
   onAddEducacion(event: Event) {
-    this.educacion = this.formEducacion.value.educacion;
-    this.educacionService.agregarEducacion(this.educacion).subscribe(() => {
-      this.personaService.getPersona(this.dataUser.id).subscribe((userData) => {
-        localStorage.setItem('userData', JSON.stringify(userData));
+    this.educacionService
+      .agregarEducacion(this.formAddEducacion.value)
+      .subscribe(() => {
+        this.personaService
+          .getPersona(this.dataUser.id)
+          .subscribe((userData) => {
+            localStorage.setItem('userData', JSON.stringify(userData));
+            console.log(userData);
+          });
       });
-    });
   }
 
   onDeleteEducacion(event: Event) {
-    this.educacionService.eliminarEducacion(this.educacion.id).subscribe(() => {
-      this.personaService.getPersona(this.dataUser.id).subscribe((userData) => {
-        localStorage.setItem('userData', JSON.stringify(userData));
-      });
-    });
+    console.log(this.dataUser.estudio.id);
+    /* this.educacionService
+      .eliminarEducacion(this.dataUser.estudio.id)
+      .subscribe(() => {
+        this.personaService
+          .getPersona(this.dataUser.id)
+          .subscribe((userData) => {
+            localStorage.setItem('userData', JSON.stringify(userData));
+          });
+      }); */
   }
 }

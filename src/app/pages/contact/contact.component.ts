@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Mensaje } from 'src/app/interfaces/mensaje';
 import { MensajesService } from 'src/app/services/mensajes.service';
+import { AutenticacionService } from 'src/app/services/autenticacion.service';
 
 @Component({
   selector: 'app-contact',
@@ -13,7 +14,8 @@ export class ContactComponent implements OnInit {
 
   constructor(
     private formbuilder: FormBuilder,
-    private mensajesService: MensajesService
+    private mensajesService: MensajesService,
+    private autenticacionService: AutenticacionService
   ) {
     this.form = this.formbuilder.group({
       nombre: ['', [Validators.required, Validators.minLength(3)]],
@@ -39,10 +41,21 @@ export class ContactComponent implements OnInit {
   onSubmit(event: Event) {
     event.preventDefault();
     if (this.form.valid) {
-      this.mensajesService.enviarMensaje(this.form.value).subscribe((data) => {
-        console.log('mensaje enviado');
-        this.form.reset();
-      });
+      if (this.autenticacionService.NotLogged) {
+        this.mensajesService
+          .enviarMensaje(this.form.value)
+          .subscribe((data) => {
+            console.log('mensaje enviado');
+            this.form.reset();
+          });
+      } else {
+        this.mensajesService
+          .enviarMensajeId(this.form.value, this.autenticacionService.currentId)
+          .subscribe((data) => {
+            console.log('mensaje enviado');
+            this.form.reset();
+          });
+      }
     } else {
       console.log('form no valido');
     }

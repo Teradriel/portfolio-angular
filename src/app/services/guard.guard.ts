@@ -37,15 +37,5 @@ export class GuardGuard implements CanActivate {
         }
       })
     );
-    /* let currentUser = this.autenticacionService.UsuarioAutenticado;
-    if (currentUser && currentUser.accessToken) {
-       this.guardLogged = true; 
-      this.rutas.navigate(['panel']);
-      console.log(currentUser.accessToken);
-      return true;
-    } else {
-      this.rutas.navigate(['login']);
-      this.guardLogged = false; 
-      return false;*/
   }
 }

@@ -17,16 +17,16 @@ export class EducacionService {
     );
   }
 
-  getTodoEducacion(): Observable<Educacion[]> {
+  getAllEducacion(): Observable<Educacion[]> {
     return this.http.get<Educacion[]>(this.url + 'all');
   }
 
-  agregarEducacion(educacion: Educacion): Observable<Educacion> {
+  agregarEducacion(newEstudio: Educacion): Observable<Educacion> {
     return this.http.post<Educacion>(
       this.url +
         'new/' +
         JSON.parse(localStorage.getItem('currentUser') || '{}').id,
-      educacion
+      newEstudio
     );
   }
 
