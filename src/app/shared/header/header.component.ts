@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AutenticacionService } from 'src/app/services/autenticacion.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +9,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(private router: Router) {}
+  logged$: Observable<boolean> | undefined;
+  notLogged$: Observable<boolean> | undefined;
+  constructor(
+    private autenticacionService: AutenticacionService,
+    private ruta: Router
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.logged$ = this.autenticacionService.Logged;
+    this.notLogged$ = this.autenticacionService.NotLogged;
+  }
+
+  onLogout() {
+    this.autenticacionService.logout();
+    this.ruta.navigate(['/login']);
+  }
 }

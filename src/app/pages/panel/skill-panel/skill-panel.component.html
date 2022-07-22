@@ -1,0 +1,139 @@
+<div>
+  <div ngbDropdown class="d-inline-block">
+    <button type="button" class="btn" id="agregarSkill" ngbDropdownToggle>
+      <i class="fa-solid fa-file-circle-plus"></i> Agregar habilidad
+    </button>
+    <div ngbDropdownMenu aria-labelledby="agregarSkill">
+      <form
+        class="mx-2 my-auto ancho"
+        (ngSubmit)="onAddSkill($event)"
+        [formGroup]="formAddSkill"
+      >
+        <div class="mb-3">
+          <label for="skill">Habilidad</label>
+          <input
+            type="text"
+            class="form-control"
+            id="skill"
+            placeholder="Habilidad"
+            formControlName="skill"
+          />
+          <label for="nivel">Nivel</label>
+          <div class="slider-container">
+            <input
+              type="range"
+              min="1"
+              max="100"
+              value="1"
+              class="slider"
+              id="myRange"
+              formControlName="nivel"
+            />
+          </div>
+        </div>
+        <button ngbDropdownItem type="submit" class="btn btn-primary">
+          Agregar habilidad
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-auto item" *ngFor="let habilidad of skills">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">{{ habilidad.skill }}</h5>
+          <div class="card-text">
+            <ngb-progressbar
+              [value]="habilidad.nivel"
+              [max]="100"
+              [type]="'secondary'"
+              height="12px"
+            ></ngb-progressbar>
+          </div>
+          <div ngbDropdown class="d-inline-block">
+            <button
+              type="button"
+              class="btn"
+              id="eliminarSkill"
+              ngbDropdownToggle
+            >
+              <i class="fa-solid fa-trash"></i>
+            </button>
+            <div ngbDropdownMenu aria-labelledby="eliminarSkill">
+              <form
+                class="mx-2 my-auto ancho"
+                (ngSubmit)="onDeleteSkill($event, habilidad.id, dataUser.id)"
+                [formGroup]="formDeleteSkill"
+              >
+                <div class="mb-3">
+                  <label for="deleteSkill"
+                    >¿Estás seguro de querer eliminar la habilidad?</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="deleteSkill"
+                    formControlName="deleteSkill"
+                    placeholder="{{ habilidad.skill }}"
+                    readonly
+                  />
+                </div>
+                <button
+                  ngbDropdownItem
+                  type="submit"
+                  class="btn btn-primary"
+                  ngbDropdownToggle
+                >
+                  Eliminar habilidad
+                </button>
+              </form>
+            </div>
+          </div>
+          <div ngbDropdown class="d-inline-block">
+            <button
+              type="button"
+              class="btn"
+              id="editarSkill"
+              ngbDropdownToggle
+            >
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+            <div ngbDropdownMenu aria-labelledby="editarSkill">
+              <form
+                class="mx-2 my-auto ancho"
+                (ngSubmit)="onSkill($event, habilidad.id)"
+                [formGroup]="formSkills"
+              >
+                <div class="mb-3">
+                  <label for="skill">Habilidad</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="skill"
+                    placeholder="Habilidad"
+                    formControlName="skill"
+                  />
+                  <label for="nivel">Nivel</label>
+                  <div class="slider-container">
+                    <input
+                      type="range"
+                      min="1"
+                      max="100"
+                      value="1"
+                      class="slider"
+                      id="myRange"
+                      formControlName="nivel"
+                    />
+                  </div>
+                </div>
+                <button ngbDropdownItem type="submit" class="btn btn-primary">
+                  Editar habilidad
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

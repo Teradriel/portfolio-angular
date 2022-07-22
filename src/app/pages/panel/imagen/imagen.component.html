@@ -1,0 +1,40 @@
+<div>
+  <div class="d-inline-block">
+    <img
+      src="{{ dataUser.imagen }}"
+      alt="la imagen"
+      height="200"
+      width="auto"
+    />
+  </div>
+  <div ngbDropdown class="d-inline-block">
+    <button type="button" class="btn" id="editarImagen" ngbDropdownToggle>
+      <i class="fa-solid fa-pen-to-square"></i>
+    </button>
+    <div ngbDropdownMenu aria-labelledby="editarImagen">
+      <form
+        class="mx-2 my-auto ancho"
+        (ngSubmit)="onImagen($event)"
+        [formGroup]="formImagen"
+      >
+        <div class="mb-3">
+          <label for="imagen">Imagen</label>
+          <p>
+            Para cargar una imagen, suba su imagen a la nube y pegue el enlace a
+            continuación
+          </p>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Escriba la url de la imagen"
+            id="imagen"
+            formControlName="imagen"
+          />
+        </div>
+        <button ngbDropdownItem type="submit" class="btn btn-primary">
+          Editar imagen
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

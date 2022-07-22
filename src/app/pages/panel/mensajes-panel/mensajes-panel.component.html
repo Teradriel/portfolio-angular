@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col-auto" *ngFor="let mensaje of mensajes">
+    <div class="card mb-3">
+      <div class="card-body">
+        <div class="card-text">{{ mensaje.nombre }}</div>
+        <div class="card-text">{{ mensaje.email }}</div>
+        <div class="card-text">{{ mensaje.telefono }}</div>
+        <div class="card-text">{{ mensaje.web }}</div>
+        <div class="card-text">{{ mensaje.mensaje }}</div>
+      </div>
+    </div>
+  </div>
+</div>

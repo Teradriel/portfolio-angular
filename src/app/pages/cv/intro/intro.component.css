@@ -1,0 +1,47 @@
+.section-title {
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 500;
+  color: #2d7788;
+  position: relative;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+.section-title .icon-holder {
+  width: 30px;
+  height: 30px;
+  margin-right: 8px;
+  display: inline-block;
+  color: #fff;
+  border-radius: 50%;
+  background-clip: padding-box;
+  background: #2d7788;
+  text-align: center;
+  padding-top: 5px;
+  font-size: 16px;
+  position: relative;
+  top: -4px;
+}
+a {
+  color: #2d7788;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+  color: #1a454f;
+  transition: all 0.4s ease-in-out;
+}
+a:focus {
+  text-decoration: none;
+}
+
+p {
+  line-height: 1.5;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 700;
+}

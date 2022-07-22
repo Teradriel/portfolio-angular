@@ -1,0 +1,30 @@
+<div>
+  <h2 class="d-inline-block">{{ dataUser.direccion }}</h2>
+  <div ngbDropdown class="d-inline-block">
+    <button type="button" class="btn" id="editarDireccion" ngbDropdownToggle>
+      <i class="fa-solid fa-pen-to-square"></i>
+    </button>
+    <div ngbDropdownMenu aria-labelledby="editarDireccion">
+      <form
+        class="mx-2 my-auto ancho"
+        (ngSubmit)="onDireccion($event)"
+        [formGroup]="formDireccion"
+      >
+        <div class="mb-3">
+          <label for="direccion">Dirección</label>
+          <input
+            type="text"
+            class="form-control"
+            id="direccion"
+            placeholder="Dirección"
+            formControlName="direccion"
+            autocomplete="address-line1"
+          />
+        </div>
+        <button ngbDropdownItem type="submit" class="btn btn-primary">
+          Editar dirección
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

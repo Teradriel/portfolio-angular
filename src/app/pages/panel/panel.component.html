@@ -1,0 +1,102 @@
+<section>
+  <div class="contenedor rectangle">
+    <div class="texto">
+      <h1 class="panel-title">Panel de usuario</h1>
+      <h3>Tus datos</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="panel-heading">
+      <div class="panel-body">
+        <div>
+          <div class="card mb-3 d-inline-block card-panel">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <h5 class="card-title">Imagen</h5>
+                <app-imagen [dataUser]="dataUser"></app-imagen>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Nombre</h5>
+                  <app-nombre [dataUser]="dataUser"></app-nombre>
+                  <h5 class="card-title">Apellido</h5>
+                  <app-apellido [dataUser]="dataUser"></app-apellido>
+                  <h5 class="card-title">E-mail</h5>
+                  <app-email [dataUser]="dataUser"></app-email>
+                  <h5 class="card-title">Usuario</h5>
+                  <app-usuario [dataUser]="dataUser"></app-usuario>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-3 d-inline-block card-panel">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <h5 class="card-title">Telefono</h5>
+                <app-telefono [dataUser]="dataUser"></app-telefono>
+                <h5 class="card-title">Dirección</h5>
+                <app-direccion [dataUser]="dataUser"></app-direccion>
+                <h5 class="card-title">Ciudad</h5>
+                <app-ciudad [dataUser]="dataUser"></app-ciudad>
+                <h5 class="card-title">País de residencia</h5>
+                <app-pais [dataUser]="dataUser"></app-pais>
+                <h5 class="card-title">Fecha de nacimiento</h5>
+                <app-nacimiento [dataUser]="dataUser"></app-nacimiento>
+                <h5 class="card-title">Orientación sexual</h5>
+                <app-sexo [dataUser]="dataUser"></app-sexo>
+                <h5 class="card-title">Estado Civil</h5>
+                <app-estado-civil [dataUser]="dataUser"></app-estado-civil>
+              </div>
+              <div class="col-md-8">
+                <h5 class="card-title">Presentación personal y profesional</h5>
+                <app-presentacion [dataUser]="dataUser"></app-presentacion>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-3 d-inline-block card-panel">
+            <div class="row g-0">
+              <h5 class="card-title">Estudios</h5>
+              <app-estudios [dataUser]="dataUser"></app-estudios>
+            </div>
+          </div>
+          <div class="card mb-3 d-inline-block card-panel">
+            <div class="row g-0">
+              <h5 class="card-title">Idiomas</h5>
+              <app-idiomas-panel [dataUser]="dataUser"></app-idiomas-panel>
+            </div>
+          </div>
+          <div class="card mb-3 d-inline-block card-panel">
+            <div class="row g-0">
+              <h5 class="card-title">Experiencia laboral</h5>
+              <app-exp-panel [dataUser]="dataUser"></app-exp-panel>
+            </div>
+          </div>
+          <div class="card mb-3 d-inline-block card-panel">
+            <div class="row g-0">
+              <h5 class="card-title">Habilidades</h5>
+              <app-skill-panel [dataUser]="dataUser"></app-skill-panel>
+            </div>
+          </div>
+          <div class="card mb-3 d-inline-block card-panel">
+            <div class="row g-0">
+              <h5 class="card-title">Cursos</h5>
+              <app-cursos-panel [dataUser]="dataUser"></app-cursos-panel>
+            </div>
+          </div>
+          <div class="card mb-3 d-inline-block card-panel">
+            <div class="row g-0">
+              <h5 class="card-title">Intereses</h5>
+              <app-intereses-panel [dataUser]="dataUser"></app-intereses-panel>
+            </div>
+          </div>
+          <div class="card mb-3 d-inline-block card-panel">
+            <div class="row g-0">
+              <h5 class="card-title">Mensajes enviados</h5>
+              <app-mensajes-panel [dataUser]="dataUser"></app-mensajes-panel>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

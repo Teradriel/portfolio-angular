@@ -1,59 +1,72 @@
+<div class="contenedor rectangle">
+  <h1 class="texto">Mantenete en contacto</h1>
+</div>
 <body class="container">
-  <form id="contact" action="" method="POST">
-    <h3>Mantente en contacto</h3>
-    <fieldset>
+  <form id="contact" (ngSubmit)="onSubmit($event)" [formGroup]="form">
+    <label for="nombre">
       <input
+        id="nombre"
         name="nombre"
-        placeholder="Nombre"
+        placeholder="Nombre (al menos 3 letras)"
         type="text"
         tabindex="1"
         required
-        autofocus
+        formControlName="nombre"
+        autocomplete="name"
       />
-    </fieldset>
-    <fieldset>
+    </label>
+    <label for="email">
       <input
+        id="email"
         name="email"
         placeholder="Email"
         type="email"
         tabindex="2"
         required
+        formControlName="email"
+        autocomplete="email"
       />
-    </fieldset>
-    <fieldset>
+    </label>
+    <label for="telefono">
       <input
-        name="tel"
-        placeholder="Telefono (opcional) - Formato: +543516534400"
+        id="telefono"
+        name="telefono"
+        placeholder="Telefono (opcional)"
         type="tel"
         pattern="+[0-9]{12}"
         tabindex="3"
+        formControlName="telefono"
+        autocomplete="tel"
       />
-    </fieldset>
-    <fieldset>
+    </label>
+    <label for="web">
       <input
-        name="url"
+        id="web"
+        name="web"
         placeholder="Sitio web (opcional)"
         type="url"
         tabindex="4"
+        formControlName="web"
+        autocomplete="url"
       />
-    </fieldset>
-    <fieldset>
+    </label>
+    <label for="mensaje">
       <textarea
+        id="mensaje"
         name="mensaje"
         placeholder="Escribe tu mensaje"
         tabindex="5"
         required
+        formControlName="mensaje"
       ></textarea>
-    </fieldset>
-    <fieldset>
-      <input
-        type="submit"
-        id="contact-submit"
-        name="submit"
-        data-submit="...Enviando"
-        value="Enviar"
-      />
-      <input type="reset" value="Borrar" />
-    </fieldset>
+    </label>
+    <input
+      type="submit"
+      id="contact-submit"
+      name="submit"
+      value="Enviar"
+      tabindex="6"
+    />
+    <input type="reset" value="Borrar" tabindex="7" />
   </form>
 </body>

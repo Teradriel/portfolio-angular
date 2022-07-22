@@ -1,0 +1,158 @@
+<div>
+  <div ngbDropdown class="d-inline-block">
+    <button type="button" class="btn" id="agregarEducacion" ngbDropdownToggle>
+      <i class="fa-solid fa-file-circle-plus"></i> Agregar Estudio
+    </button>
+    <div ngbDropdownMenu aria-labelledby="agregarEducacion">
+      <form
+        class="mx-2 my-auto ancho"
+        (ngSubmit)="onAddEducacion($event)"
+        [formGroup]="formAddEducacion"
+      >
+        <div class="mb-3">
+          <label for="titulo">Título</label>
+          <input
+            type="text"
+            class="form-control"
+            id="titulo"
+            placeholder="Título"
+            formControlName="titulo"
+          />
+          <label for="fechaInicio">Fecha de inicio (DD/MM/AAAA)</label>
+          <input
+            type="text"
+            class="form-control"
+            id="fechaInicio"
+            placeholder="Fecha de inicio (DD/MM/AAAA)"
+            formControlName="fechaInicio"
+          />
+          <label for="fechaFin">Fecha de fin (DD/MM/AAAA)</label>
+          <input
+            type="text"
+            class="form-control"
+            id="fechaFin"
+            placeholder="Fecha de fin (DD/MM/AAAA)"
+            formControlName="fechaFin"
+          />
+          <label for="institucion">Institución</label>
+          <input
+            type="text"
+            class="form-control"
+            id="institucion"
+            placeholder="Institución"
+            formControlName="institucion"
+          />
+        </div>
+        <button ngbDropdownItem type="submit" class="btn btn-primary">
+          Agregar educación
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-auto" *ngFor="let edu of estudios">
+      <div class="card mb-3 d-inline-block">
+        <div class="card-body">
+          <h5 class="card-title">{{ edu.titulo }}</h5>
+          <div class="card-text">Fecha de inicio: {{ edu.fechaInicio }}</div>
+          <div class="card-text">Fecha de finalización: {{ edu.fechaFin }}</div>
+          <div class="card-text">Institución: {{ edu.institucion }}</div>
+          <div ngbDropdown class="d-inline-block">
+            <button
+              type="button"
+              class="btn"
+              id="eliminarEducacion"
+              ngbDropdownToggle
+            >
+              <i class="fa-solid fa-trash"></i>
+            </button>
+            <div ngbDropdownMenu aria-labelledby="eliminarEducacion">
+              <form
+                class="mx-2 my-auto ancho"
+                (ngSubmit)="onDeleteEducacion($event, edu.id, dataUser.id)"
+                [formGroup]="formDeleteEducacion"
+              >
+                <div class="mb-3">
+                  <label for="deleteEdu"
+                    >¿Estás seguro de querer eliminar el estudio?</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="deleteEdu"
+                    formControlName="deleteEdu"
+                    placeholder="{{ edu.titulo }}"
+                    readonly
+                  />
+                </div>
+                <button
+                  ngbDropdownItem
+                  type="submit"
+                  class="btn btn-primary"
+                  ngbDropdownToggle
+                >
+                  Eliminar educación
+                </button>
+              </form>
+            </div>
+          </div>
+          <div ngbDropdown class="d-inline-block">
+            <button
+              type="button"
+              class="btn"
+              id="editarEducacion"
+              ngbDropdownToggle
+            >
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+            <div ngbDropdownMenu aria-labelledby="editarEducacion">
+              <form
+                class="mx-2 my-auto ancho"
+                (ngSubmit)="onEducacion($event, edu.id)"
+                [formGroup]="formEducacion"
+              >
+                <div class="mb-3">
+                  <label for="titulo">Titulo</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="titulo"
+                    placeholder="Título"
+                    formControlName="titulo"
+                  />
+                  <label for="fechaInicio">Fecha de inicio (DD/MM/AAAA)</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="fechaInicio"
+                    placeholder="Fecha de inicio (DD/MM/AAAA)"
+                    formControlName="fechaInicio"
+                  />
+                  <label for="fechaFin">Fecha de fin (DD/MM/AAAA)</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="fechaFin"
+                    placeholder="Fecha de fin (DD/MM/AAAA)"
+                    formControlName="fechaFin"
+                  />
+                  <label for="institucion">Institución</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="institucion"
+                    placeholder="Institución"
+                    formControlName="institucion"
+                  />
+                </div>
+                <button ngbDropdownItem type="submit" class="btn btn-primary">
+                  Editar educación
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

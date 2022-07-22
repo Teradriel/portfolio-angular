@@ -1,0 +1,175 @@
+<div>
+  <div ngbDropdown class="d-inline-block">
+    <button type="button" class="btn" id="agregarExperiencia" ngbDropdownToggle>
+      <i class="fa-solid fa-file-circle-plus"></i> Agregar experiencia
+    </button>
+    <div ngbDropdownMenu aria-labelledby="agregarExperiencia">
+      <form
+        class="mx-2 my-auto ancho"
+        (ngSubmit)="onAddExperiencia($event)"
+        [formGroup]="formAddExperiencia"
+      >
+        <div class="mb-3">
+          <label for="titulo">Título</label>
+          <input
+            type="text"
+            class="form-control"
+            id="titulo"
+            placeholder="Título"
+            formControlName="titulo"
+          />
+          <label for="empresa">Empresa</label>
+          <input
+            type="text"
+            class="form-control"
+            id="empresa"
+            placeholder="Empresa"
+            formControlName="empresa"
+          />
+          <label for="fechaInicio">Fecha de inicio (DD/MM/AAAA)</label>
+          <input
+            type="text"
+            class="form-control"
+            id="fechaInicio"
+            placeholder="Fecha de inicio (DD/MM/AAAA)"
+            formControlName="fechaInicio"
+          />
+          <label for="fechaFin">Fecha de fin (DD/MM/AAAA)</label>
+          <input
+            type="text"
+            class="form-control"
+            id="fechaFin"
+            placeholder="Fecha de fin (DD/MM/AAAA)"
+            formControlName="fechaFin"
+          />
+          <label for="descripcion">Descripción</label>
+          <input
+            type="text"
+            class="form-control"
+            id="descripcion"
+            placeholder="Descripción"
+            formControlName="descripcion"
+          />
+        </div>
+        <button ngbDropdownItem type="submit" class="btn btn-primary">
+          Agregar experiencia laboral
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-auto" *ngFor="let exp of experiencias">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">{{ exp.titulo }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{ exp.empresa }}</h6>
+          <p class="card-text">{{ exp.fechaInicio }} - {{ exp.fechaFin }}</p>
+          <p class="card-text">{{ exp.descripcion }}</p>
+          <div ngbDropdown class="d-inline-block">
+            <button
+              type="button"
+              class="btn"
+              id="eliminarExperiencia"
+              ngbDropdownToggle
+            >
+              <i class="fa-solid fa-trash"></i>
+            </button>
+            <div ngbDropdownMenu aria-labelledby="eliminarExperiencia">
+              <form
+                class="mx-2 my-auto ancho"
+                (ngSubmit)="onDeleteExperiencia($event, exp.id, dataUser.id)"
+                [formGroup]="formDeleteExperiencia"
+              >
+                <div class="mb-3">
+                  <label for="deleteExp"
+                    >¿Estás seguro de querer eliminar la experiencia
+                    laboral?</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="deleteExp"
+                    formControlName="deleteExp"
+                    placeholder="{{ exp.titulo }}"
+                    readonly
+                  />
+                </div>
+                <button
+                  ngbDropdownItem
+                  type="submit"
+                  class="btn btn-primary"
+                  ngbDropdownToggle
+                >
+                  Eliminar experiencia laboral
+                </button>
+              </form>
+            </div>
+          </div>
+          <div ngbDropdown class="d-inline-block">
+            <button
+              type="button"
+              class="btn"
+              id="editarExperiencia"
+              ngbDropdownToggle
+            >
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+            <div ngbDropdownMenu aria-labelledby="editarExperiencia">
+              <form
+                class="mx-2 my-auto ancho"
+                (ngSubmit)="onExperiencia($event, exp.id)"
+                [formGroup]="formExperiencias"
+              >
+                <div class="mb-3">
+                  <label for="titulo">Titulo</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="titulo"
+                    placeholder="Título"
+                    formControlName="titulo"
+                  />
+                  <label for="empresa">Empresa</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="empresa"
+                    placeholder="Empresa"
+                    formControlName="empresa"
+                  />
+                  <label for="fechaInicio">Fecha de inicio (DD/MM/AAAA)</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="fechaInicio"
+                    placeholder="Fecha de inicio (DD/MM/AAAA)"
+                    formControlName="fechaInicio"
+                  />
+                  <label for="fechaFin">Fecha de fin (DD/MM/AAAA)</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="fechaFin"
+                    placeholder="Fecha de fin (DD/MM/AAAA)"
+                    formControlName="fechaFin"
+                  />
+                  <label for="descripcion">Descripción</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="descripcion"
+                    placeholder="Descripción"
+                    formControlName="descripcion"
+                  />
+                </div>
+                <button ngbDropdownItem type="submit" class="btn btn-primary">
+                  Editar experiencia laboral
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

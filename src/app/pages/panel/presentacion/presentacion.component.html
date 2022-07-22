@@ -1,0 +1,29 @@
+<div>
+  <h2>{{ dataUser.intro }}</h2>
+  <div ngbDropdown class="d-inline-block">
+    <button type="button" class="btn" id="editarIntro" ngbDropdownToggle>
+      <i class="fa-solid fa-pen-to-square"></i>
+    </button>
+    <div ngbDropdownMenu aria-labelledby="editarIntro">
+      <form
+        class="mx-2 my-auto ancho"
+        (ngSubmit)="onIntro($event)"
+        [formGroup]="formIntro"
+      >
+        <div class="mb-3">
+          <label for="intro">Presentación personal y profesional</label>
+          <textarea
+            type="text"
+            class="form-control"
+            id="intro"
+            placeholder="Presentación personal y profesional"
+            formControlName="intro"
+          ></textarea>
+        </div>
+        <button ngbDropdownItem type="submit" class="btn btn-primary">
+          Editar presentación personal y profesional
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

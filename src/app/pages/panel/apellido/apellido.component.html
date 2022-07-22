@@ -1,0 +1,30 @@
+<div>
+  <h2 class="d-inline-block">{{ dataUser.apellido }}</h2>
+  <div ngbDropdown class="d-inline-block">
+    <button type="button" class="btn" id="editarApellido" ngbDropdownToggle>
+      <i class="fa-solid fa-pen-to-square"></i>
+    </button>
+    <div ngbDropdownMenu aria-labelledby="editarApellido">
+      <form
+        class="mx-2 my-auto ancho"
+        (ngSubmit)="onApellido($event)"
+        [formGroup]="formApellido"
+      >
+        <div class="mb-3">
+          <label for="apellido">Apellido</label>
+          <input
+            type="text"
+            class="form-control"
+            id="apellido"
+            placeholder="Apellido"
+            formControlName="apellido"
+            autocomplete="family-name"
+          />
+        </div>
+        <button ngbDropdownItem type="submit" class="btn btn-primary">
+          Editar apellido
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

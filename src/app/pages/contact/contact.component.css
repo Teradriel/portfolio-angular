@@ -2,6 +2,27 @@
   width: 70%;
 }
 
+.rectangle {
+  background-color: #2d7788;
+  margin-bottom: 3rem;
+  background-position: 0%;
+}
+
+.contenedor {
+  width: 100%;
+  height: 15rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.texto {
+  color: aliceblue;
+  text-align: center;
+  align-self: flex-end;
+  bottom: 2rem;
+}
+
 #contact {
   padding: 25px;
   /* box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24); */
@@ -21,7 +42,7 @@
   font-weight: 400;
 }
 
-fieldset {
+label {
   border: medium none !important;
   margin: 0 0 10px;
   min-width: 100%;

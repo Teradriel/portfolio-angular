@@ -1,0 +1,118 @@
+<section class="section experiences-section">
+  <h2 class="section-title">
+    <span class="icon-holder"><i class="fa-solid fa-briefcase"></i></span
+    >Experiencia laboral
+  </h2>
+  <div class="item" *ngFor="let exp of experiencias">
+    <div class="meta">
+      <div class="upper-row">
+        <h3 class="job-title">
+          {{ exp.titulo }} Asistente de laboratorio y producción
+        </h3>
+        <div class="time">
+          {{ exp.fechaInicio }} Marzo 2021 - {{ exp.fechaFin }} Marzo 2022
+        </div>
+      </div>
+
+      <div class="company">{{ exp.empresa }} E-Chem SRL</div>
+    </div>
+
+    <div class="details">
+      <p>
+        {{ exp.descripcion }}
+        Laboratorio químico, laboratorio de materiales, control de calidad,
+        producción por lotes, redacción de informes de clientes, uso de
+        microscopio metalográfico.
+      </p>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="meta">
+      <div class="upper-row">
+        <h3 class="job-title">Emprendedor en Opalo Chocolates</h3>
+        <div class="time">2021</div>
+      </div>
+
+      <div class="company">Opalo Chocolates</div>
+    </div>
+
+    <div class="details">
+      <p>
+        Chocolatería de vanguardia, bombones artesanales premium, chocolate en
+        rama y tabletas de chocolate.
+        <br />
+        Dedicándome a la producción y venta de chocolates premium. Al mismo
+        tiempo me dediqué a la compra de insumos y materias primas y al control
+        de calidad.
+      </p>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="meta">
+      <div class="upper-row">
+        <h3 class="job-title">
+          Consultor técnico en Bioenergía y biocombustibles
+        </h3>
+        <div class="time">Julio 2017 - Julio 2021</div>
+      </div>
+
+      <div class="company">Gobierno de la Provincia de Córdoba</div>
+    </div>
+
+    <div class="details">
+      <p>
+        En la Dirección General de Energías Renovables y Comunicaciones del
+        Ministerio de Servicios Públicos de la provincia de Córdoba. Ejecución
+        de apoyo técnico en pruebas de biocombustibles en motores, gestión en la
+        implementación de un plan de recolección de aceite vegetal usado,
+        seguimiento en el desarrollo de una ley de movilidad sustentable, para
+        apoyar la planificación de proyectos científico - tecnológicos y
+        empresas en bioenergía, entre otras actividades relacionadas con las
+        energías renovables, en particular los biocombustibles y la biomasa.
+      </p>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="meta">
+      <div class="upper-row">
+        <h3 class="job-title">Asistente de investigación Jr</h3>
+        <div class="time">Febrero 2011 - Febrero 2012</div>
+      </div>
+
+      <div class="company">Universidad Nacional de Córdoba</div>
+    </div>
+
+    <div class="details">
+      <p>
+        Asistente de Investigación, en el Instituto de Ciencia y Tecnología de
+        los Alimentos (ICTA) en la Facultad de Ciencias Exactas Físicas y
+        Naturales de la Universidad Nacional de Córdoba. Colaboración en
+        proyectos de investigación en el Área de Productos Alimentarios y
+        Análisis Sensorial.
+      </p>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="meta">
+      <div class="upper-row">
+        <h3 class="job-title">Asistente de laboratorio</h3>
+        <div class="time">Mayo 2008 - Noviembre 2010</div>
+      </div>
+
+      <div class="company">ARRT - Ingenieros Consultores</div>
+    </div>
+
+    <div class="details">
+      <p>
+        Realización de análisis de laboratorio ordinarios (límites de Atterberg,
+        humedad natural, peso unitario y tamaño de partícula) y especiales
+        (Proctor, compresión confinada, CBR y sales solubles). Ensayos de
+        compresión en probetas de hormigón.
+      </p>
+    </div>
+  </div>
+</section>
