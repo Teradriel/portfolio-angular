@@ -1,0 +1,158 @@
+<div>
+  <div ngbDropdown class="d-inline-block">
+    <button type="button" class="btn" id="agregarCurso" ngbDropdownToggle>
+      <i class="fa-solid fa-file-circle-plus"></i> Agregar curso
+    </button>
+    <div ngbDropdownMenu aria-labelledby="agregarCurso">
+      <form
+        class="mx-2 my-auto ancho"
+        (ngSubmit)="onAddCurso($event)"
+        [formGroup]="formAddCurso"
+      >
+        <div class="mb-3">
+          <label for="titulo">Titulo</label>
+          <input
+            type="text"
+            class="form-control"
+            id="titulo"
+            placeholder="Título"
+            formControlName="titulo"
+          />
+          <label for="fecha">Fecha (Mes - Año)</label>
+          <input
+            type="text"
+            class="form-control"
+            id="fecha"
+            placeholder="Fecha (Mes - Año)"
+            formControlName="fecha"
+          />
+          <label for="lugar">Lugar</label>
+          <input
+            type="text"
+            class="form-control"
+            id="lugar"
+            placeholder="Lugar"
+            formControlName="lugar"
+          />
+          <label for="descripcion">descripcion</label>
+          <input
+            type="text"
+            class="form-control"
+            id="descripcion"
+            placeholder="Descripción"
+            formControlName="descripcion"
+          />
+        </div>
+        <button ngbDropdownItem type="submit" class="btn btn-primary">
+          Agregar Curso
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-auto" *ngFor="let curso of cursos">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">{{ curso.titulo }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{ curso.fecha }}</h6>
+          <h6 class="card-subtitle mb-2 text-muted">{{ curso.lugar }}</h6>
+          <p class="card-text">{{ curso.descripcion }}</p>
+          <div ngbDropdown class="d-inline-block">
+            <button
+              type="button"
+              class="btn btn-light"
+              id="eliminarCurso"
+              ngbDropdownToggle
+            >
+              <i class="fa-solid fa-trash"></i>
+            </button>
+            <div ngbDropdownMenu aria-labelledby="eliminarCurso">
+              <form
+                class="mx-2 my-auto ancho"
+                (ngSubmit)="onDeleteCurso($event, curso.id, dataUser.id)"
+                [formGroup]="formDeleteCurso"
+              >
+                <div class="mb-3">
+                  <label for="deleteCurso"
+                    >¿Estás seguro de querer eliminar el curso?</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="deleteCurso"
+                    formControlName="deleteCurso"
+                    placeholder="{{ curso.titulo }}"
+                    readonly
+                  />
+                </div>
+                <button
+                  ngbDropdownItem
+                  type="submit"
+                  class="btn btn-primary"
+                  ngbDropdownToggle
+                >
+                  Eliminar curso
+                </button>
+              </form>
+            </div>
+          </div>
+          <div ngbDropdown class="d-inline-block">
+            <button
+              type="button"
+              class="btn btn-light"
+              id="editarCurso"
+              ngbDropdownToggle
+            >
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+            <div ngbDropdownMenu aria-labelledby="editarCurso">
+              <form
+                class="mx-2 my-auto ancho"
+                (ngSubmit)="onCurso($event, curso.id)"
+                [formGroup]="formCursos"
+              >
+                <div class="mb-3">
+                  <label for="titulo">Titulo</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="titulo"
+                    placeholder="Título"
+                    formControlName="titulo"
+                  />
+                  <label for="fecha">Fecha (Mes - Año)</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="fecha"
+                    placeholder="Fecha (Mes - Año)"
+                    formControlName="fecha"
+                  />
+                  <label for="lugar">Lugar</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="lugar"
+                    placeholder="Lugar"
+                    formControlName="lugar"
+                  />
+                  <label for="descripcion">descripcion</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="descripcion"
+                    placeholder="Descripción"
+                    formControlName="descripcion"
+                  />
+                </div>
+                <button ngbDropdownItem type="submit" class="btn btn-primary">
+                  Editar educación
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

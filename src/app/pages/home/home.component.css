@@ -7,9 +7,20 @@
 .circle {
   height: 140px;
   width: 140px;
-  background-color: #42a8c0;
   border-radius: 50%;
   margin: 0 auto 2rem;
+}
+
+#ing {
+  background-image: url("../../../assets/images/ing.png");
+}
+
+#dev {
+  background-image: url("../../../assets/images/dev.png");
+}
+
+#musico {
+  background-image: url("../../../assets/images/musico.png");
 }
 
 .contenedor {

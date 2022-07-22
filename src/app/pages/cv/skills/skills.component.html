@@ -6,16 +6,12 @@
   <div class="skillset">
     <div class="item" *ngFor="let skill of skills">
       <h3 class="level-title">{{ skill.skill }} Teamwork</h3>
-      <div class="progress level-bar">
-        <div
-          class="progress-bar theme-progress-bar"
-          role="progressbar"
-          style="width: 100%"
-          attr.aria-valuenow=" {{ skill.nivel }} "
-          aria-valuemin="0"
-          aria-valuemax="100"
-        ></div>
-      </div>
+      <ngb-progressbar
+        [value]="skill.nivel"
+        [max]="100"
+        [type]="'secondary'"
+        height="12px"
+      ></ngb-progressbar>
     </div>
 
     <div class="item">

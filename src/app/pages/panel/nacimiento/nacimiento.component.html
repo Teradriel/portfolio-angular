@@ -1,0 +1,35 @@
+<div>
+  <h2 class="d-inline-block">{{ dataUser.fechaNacimiento }}</h2>
+  <div ngbDropdown class="d-inline-block">
+    <button
+      type="button"
+      class="btn"
+      id="editarFechaNacimiento"
+      ngbDropdownToggle
+    >
+      <i class="fa-solid fa-pen-to-square"></i>
+    </button>
+    <div ngbDropdownMenu aria-labelledby="editarFechaNacimiento">
+      <form
+        class="mx-2 my-auto ancho"
+        (ngSubmit)="onFechaNacimiento($event)"
+        [formGroup]="formFechaNacimiento"
+      >
+        <div class="mb-3">
+          <label for="fechaNacimiento">Fecha de nacimiento</label>
+          <input
+            type="date"
+            class="form-control"
+            id="fechaNacimiento"
+            placeholder="Fecha de nacimiento"
+            formControlName="fechaNacimiento"
+            autocomplete="bday"
+          />
+        </div>
+        <button ngbDropdownItem type="submit" class="btn btn-primary">
+          Editar fecha de nacimiento
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

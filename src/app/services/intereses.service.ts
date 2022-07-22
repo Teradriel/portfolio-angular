@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Intereses } from '../interfaces/intereses';
 import { Observable } from 'rxjs';
+import { User } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root',
@@ -21,8 +22,8 @@ export class InteresesService {
     return this.http.get<Intereses[]>(this.url + 'all');
   }
 
-  agregarIntereses(newInteres: Intereses): Observable<Intereses> {
-    return this.http.post<Intereses>(
+  agregarIntereses(newInteres: Intereses): Observable<User> {
+    return this.http.post<User>(
       this.url +
         'new/' +
         JSON.parse(localStorage.getItem('currentUser') || '{}').id,
@@ -34,7 +35,7 @@ export class InteresesService {
     return this.http.put<Intereses>(this.url + 'edit/' + id, interes);
   }
 
-  eliminarIntereses(id: string): Observable<Intereses> {
-    return this.http.delete<Intereses>(this.url + 'delete/' + id);
+  eliminarIntereses(id: string, user_id: string): Observable<User> {
+    return this.http.delete<User>(this.url + 'delete/' + id + '/' + user_id);
   }
 }

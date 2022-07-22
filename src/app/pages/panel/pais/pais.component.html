@@ -1,0 +1,30 @@
+<div>
+  <h2 class="d-inline-block">{{ dataUser.pais }}</h2>
+  <div ngbDropdown class="d-inline-block">
+    <button type="button" class="btn" id="editarPais" ngbDropdownToggle>
+      <i class="fa-solid fa-pen-to-square"></i>
+    </button>
+    <div ngbDropdownMenu aria-labelledby="editarPais">
+      <form
+        class="mx-2 my-auto ancho"
+        (ngSubmit)="onPais($event)"
+        [formGroup]="formPais"
+      >
+        <div class="mb-3">
+          <label for="pais">País</label>
+          <input
+            type="text"
+            class="form-control"
+            id="pais"
+            placeholder="País"
+            formControlName="pais"
+            autocomplete="country-name"
+          />
+        </div>
+        <button ngbDropdownItem type="submit" class="btn btn-primary">
+          Editar país
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

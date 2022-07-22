@@ -11,6 +11,8 @@ export class IntroSideComponent implements OnInit {
   email: String = '';
   telefono: String = '';
   imagen: String = '';
+  tag1: String = '';
+  tag2: String = '';
 
   constructor() {}
 
@@ -24,5 +26,11 @@ export class IntroSideComponent implements OnInit {
       localStorage.getItem('userData') || '{}'
     ).telefono;
     this.imagen = JSON.parse(localStorage.getItem('userData') || '{}').imagen;
+    this.tag1 = JSON.parse(
+      localStorage.getItem('userData') || '{}'
+    ).estudio[1].titulo;
+    this.tag2 = JSON.parse(
+      localStorage.getItem('userData') || '{}'
+    ).estudio[2].titulo;
   }
 }

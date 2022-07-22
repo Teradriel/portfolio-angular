@@ -9,687 +9,91 @@
     <div class="panel-heading">
       <div class="panel-body">
         <div>
-          <div>
-            <strong>Nombre:</strong>
-            <div ngbDropdown class="d-inline-block">
-              <button
-                type="button"
-                class="btn btn-light"
-                id="editarNombre"
-                ngbDropdownToggle
-              >
-                <i class="fa-solid fa-pen-to-square"></i>
-              </button>
-              <div ngbDropdownMenu aria-labelledby="editarNombre">
-                <form
-                  class="mx-2 my-auto ancho"
-                  (ngSubmit)="onNombre($event)"
-                  [formGroup]="formNombre"
-                >
-                  <div class="mb-3">
-                    <label for="nombre">Nombre</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="nombre"
-                      placeholder="Nombre"
-                      formControlName="nombre"
-                      autocomplete="given-name"
-                    />
-                  </div>
-                  <button type="submit" class="btn btn-primary">
-                    Editar nombre
-                  </button>
-                </form>
+          <div class="card mb-3 d-inline-block card-panel">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <h5 class="card-title">Imagen</h5>
+                <app-imagen [dataUser]="dataUser"></app-imagen>
               </div>
-            </div>
-            <p>{{ dataUser.nombre }}</p>
-          </div>
-          <div>
-            <strong>Apellido:</strong>
-            <div ngbDropdown class="d-inline-block">
-              <button
-                type="button"
-                class="btn btn-light"
-                id="editarApellido"
-                ngbDropdownToggle
-              >
-                <i class="fa-solid fa-pen-to-square"></i>
-              </button>
-              <div ngbDropdownMenu aria-labelledby="editarApellido">
-                <form
-                  class="mx-2 my-auto ancho"
-                  (ngSubmit)="onApellido($event)"
-                  [formGroup]="formApellido"
-                >
-                  <div class="mb-3">
-                    <label for="apellido">Apellido</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="apellido"
-                      placeholder="Apellido"
-                      formControlName="apellido"
-                      autocomplete="family-name"
-                    />
-                  </div>
-                  <button type="submit" class="btn btn-primary">
-                    Editar apellido
-                  </button>
-                </form>
-              </div>
-            </div>
-            <p>{{ dataUser.apellido }}</p>
-          </div>
-          <div>
-            <strong>E-mail:</strong>
-            <p>{{ dataUser.email }}</p>
-          </div>
-          <div>
-            <strong>Teléfono</strong>
-            <div ngbDropdown class="d-inline-block">
-              <button
-                type="button"
-                class="btn btn-light"
-                id="editarTelefono"
-                ngbDropdownToggle
-              >
-                <i class="fa-solid fa-pen-to-square"></i>
-              </button>
-              <div ngbDropdownMenu aria-labelledby="editarTelefono">
-                <form
-                  class="mx-2 my-auto ancho"
-                  (ngSubmit)="onTelefono($event)"
-                  [formGroup]="formTelefono"
-                >
-                  <div class="mb-3">
-                    <label for="telefono">Teléfono</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="telefono"
-                      placeholder="Teléfono"
-                      formControlName="telefono"
-                      autocomplete="tel"
-                    />
-                  </div>
-                  <button type="submit" class="btn btn-primary">
-                    Editar teléfono
-                  </button>
-                </form>
-              </div>
-            </div>
-            <p>{{ dataUser.telefono }}</p>
-          </div>
-          <div>
-            <strong>Usuario:</strong>
-            <p>
-              {{ dataUser.username }}
-            </p>
-          </div>
-          <div>
-            <strong>País:</strong>
-            <div ngbDropdown class="d-inline-block">
-              <button
-                type="button"
-                class="btn btn-light"
-                id="editarPais"
-                ngbDropdownToggle
-              >
-                <i class="fa-solid fa-pen-to-square"></i>
-              </button>
-              <div ngbDropdownMenu aria-labelledby="editarPais">
-                <form
-                  class="mx-2 my-auto ancho"
-                  (ngSubmit)="onPais($event)"
-                  [formGroup]="formPais"
-                >
-                  <div class="mb-3">
-                    <label for="pais">País</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="pais"
-                      placeholder="País"
-                      formControlName="pais"
-                      autocomplete="country-name"
-                    />
-                  </div>
-                  <button type="submit" class="btn btn-primary">
-                    Editar país
-                  </button>
-                </form>
-              </div>
-            </div>
-            <p>{{ dataUser.pais }}</p>
-          </div>
-          <div>
-            <strong>Ciudad</strong>
-            <div ngbDropdown class="d-inline-block">
-              <button
-                type="button"
-                class="btn btn-light"
-                id="editarCiudad"
-                ngbDropdownToggle
-              >
-                <i class="fa-solid fa-pen-to-square"></i>
-              </button>
-              <div ngbDropdownMenu aria-labelledby="editarCiudad">
-                <form
-                  class="mx-2 my-auto ancho"
-                  (ngSubmit)="onCiudad($event)"
-                  [formGroup]="formCiudad"
-                >
-                  <div class="mb-3">
-                    <label for="ciudad">Ciudad</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="ciudad"
-                      placeholder="Ciudad"
-                      formControlName="ciudad"
-                      autocomplete="city-name"
-                    />
-                  </div>
-                  <button type="submit" class="btn btn-primary">
-                    Editar ciudad
-                  </button>
-                </form>
-              </div>
-            </div>
-            <p>{{ dataUser.ciudad }}</p>
-          </div>
-          <div>
-            <strong>Dirección:</strong>
-            <div ngbDropdown class="d-inline-block">
-              <button
-                type="button"
-                class="btn btn-light"
-                id="editarDireccion"
-                ngbDropdownToggle
-              >
-                <i class="fa-solid fa-pen-to-square"></i>
-              </button>
-              <div ngbDropdownMenu aria-labelledby="editarDireccion">
-                <form
-                  class="mx-2 my-auto ancho"
-                  (ngSubmit)="onDireccion($event)"
-                  [formGroup]="formDireccion"
-                >
-                  <div class="mb-3">
-                    <label for="direccion">Dirección</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="direccion"
-                      placeholder="Dirección"
-                      formControlName="direccion"
-                      autocomplete="address-line1"
-                    />
-                  </div>
-                  <button type="submit" class="btn btn-primary">
-                    Editar dirección
-                  </button>
-                </form>
-              </div>
-            </div>
-            <p>{{ dataUser.direccion }}</p>
-          </div>
-          <div>
-            <strong>Fecha de Nacimiento:</strong>
-            <div ngbDropdown class="d-inline-block">
-              <button
-                type="button"
-                class="btn btn-light"
-                id="editarFechaNacimiento"
-                ngbDropdownToggle
-              >
-                <i class="fa-solid fa-pen-to-square"></i>
-              </button>
-              <div ngbDropdownMenu aria-labelledby="editarFechaNacimiento">
-                <form
-                  class="mx-2 my-auto ancho"
-                  (ngSubmit)="onFechaNacimiento($event)"
-                  [formGroup]="formFechaNacimiento"
-                >
-                  <div class="mb-3">
-                    <label for="fechanacimiento">Fecha de nacimiento</label>
-                    <input
-                      type="date"
-                      class="form-control"
-                      id="fechanacimiento"
-                      placeholder="Fecha de nacimiento"
-                      formControlName="fechaNacimiento"
-                      autocomplete="bday"
-                    />
-                  </div>
-                  <button type="submit" class="btn btn-primary">
-                    Editar fecha de nacimiento
-                  </button>
-                </form>
-              </div>
-            </div>
-            <p>{{ dataUser.fechaNacimiento }}</p>
-          </div>
-          <div>
-            <strong>Sexo:</strong>
-            <div ngbDropdown class="d-inline-block">
-              <button
-                type="button"
-                class="btn btn-light"
-                id="editarSexo"
-                ngbDropdownToggle
-              >
-                <i class="fa-solid fa-pen-to-square"></i>
-              </button>
-              <div ngbDropdownMenu aria-labelledby="editarSexo">
-                <form
-                  class="mx-2 my-auto ancho"
-                  (ngSubmit)="onSexo($event)"
-                  [formGroup]="formSexo"
-                >
-                  <div class="mb-3">
-                    <label for="sexo">Sexo</label>
-                    <select
-                      class="form-control"
-                      id="sexo"
-                      formControlName="sexo"
-                      autocomplete="sex"
-                    >
-                      <option value="">elegir su orientacion sexual</option>
-                      <option value="Masculino">Masculino</option>
-                      <option value="Femenino">Femenino</option>
-                      <option value="Otros">Otros</option>
-                    </select>
-                  </div>
-                  <button type="submit" class="btn btn-primary">
-                    Editar sexo
-                  </button>
-                </form>
-              </div>
-            </div>
-            <p>{{ dataUser.sexo }}</p>
-          </div>
-          <div>
-            <strong>Estado Civil:</strong>
-            <div ngbDropdown class="d-inline-block">
-              <button
-                type="button"
-                class="btn btn-light"
-                id="editarEstadoCivil"
-                ngbDropdownToggle
-              >
-                <i class="fa-solid fa-pen-to-square"></i>
-              </button>
-              <div ngbDropdownMenu aria-labelledby="editarEstadoCivil">
-                <form
-                  class="mx-2 my-auto ancho"
-                  (ngSubmit)="onEstadoCivil($event)"
-                  [formGroup]="formEstadoCivil"
-                >
-                  <div class="mb-3">
-                    <label for="estadocivil">Estado Civil</label>
-                    <select
-                      class="form-control"
-                      id="estadocivil"
-                      formControlName="estadoCivil"
-                    >
-                      <option value="">Elegir su estado civil</option>
-                      <option value="Soltero/a">Soltero/a</option>
-                      <option value="Casado/a">Casado/a</option>
-                      <option value="Divorciado/a">Divorciado/a</option>
-                      <option value="Viudo/a">Viudo/a</option>
-                    </select>
-                  </div>
-                  <button type="submit" class="btn btn-primary">
-                    Editar estado civil
-                  </button>
-                </form>
-              </div>
-            </div>
-            <p>{{ dataUser.estadoCivil }}</p>
-          </div>
-          <div>
-            <strong>Imagen</strong>
-            <div ngbDropdown class="d-inline-block">
-              <button
-                type="button"
-                class="btn btn-light"
-                id="editarImagen"
-                ngbDropdownToggle
-              >
-                <i class="fa-solid fa-pen-to-square"></i>
-              </button>
-              <div ngbDropdownMenu aria-labelledby="editarImagen">
-                <form
-                  class="mx-2 my-auto ancho"
-                  (ngSubmit)="onImagen($event)"
-                  [formGroup]="formImagen"
-                >
-                  <div class="mb-3">
-                    <label for="imagen">Imagen</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Escriba la url de la imagen"
-                      id="imagen"
-                      formControlName="imagen"
-                    />
-                  </div>
-                  <button type="submit" class="btn btn-primary">
-                    Editar imagen
-                  </button>
-                </form>
-              </div>
-            </div>
-            <p>{{ dataUser.imagen }}</p>
-          </div>
-          <div>
-            <strong>Presentación personal y profesional:</strong>
-            <div ngbDropdown class="d-inline-block">
-              <button
-                type="button"
-                class="btn btn-light"
-                id="editarIntro"
-                ngbDropdownToggle
-              >
-                <i class="fa-solid fa-pen-to-square"></i>
-              </button>
-              <div ngbDropdownMenu aria-labelledby="editarIntro">
-                <form
-                  class="mx-2 my-auto ancho"
-                  (ngSubmit)="onIntro($event)"
-                  [formGroup]="formIntro"
-                >
-                  <div class="mb-3">
-                    <label for="intro"
-                      >Presentación personal y profesional</label
-                    >
-                    <textarea
-                      type="text"
-                      class="form-control"
-                      id="intro"
-                      placeholder="Presentación personal y profesional"
-                      formControlName="intro"
-                    ></textarea>
-                  </div>
-                  <button type="submit" class="btn btn-primary">
-                    Editar presentación personal y profesional
-                  </button>
-                </form>
-              </div>
-            </div>
-            <p>{{ dataUser.intro }}</p>
-          </div>
-          <strong>Educación:</strong>
-          <div ngbDropdown class="d-inline-block">
-            <button
-              type="button"
-              class="btn btn-light"
-              id="agregarEducacion"
-              ngbDropdownToggle
-            >
-              <i class="fa-solid fa-file-circle-plus"></i>
-            </button>
-            <div ngbDropdownMenu aria-labelledby="agregarEducacion">
-              <form
-                class="mx-2 my-auto ancho"
-                (ngSubmit)="onAddEducacion($event)"
-                [formGroup]="formAddEducacion"
-              >
-                <div class="mb-3">
-                  <label for="titulo">Titulo</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="titulo"
-                    placeholder="Título"
-                    formControlName="titulo"
-                  />
-                  <label for="fechaInicio">Fecha de inicio (DD/MM/AAAA)</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="fechaInicio"
-                    placeholder="Fecha de inicio (DD/MM/AAAA)"
-                    formControlName="fechaInicio"
-                  />
-                  <label for="fechaFin">Fecha de fin (DD/MM/AAAA)</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="fechaFin"
-                    placeholder="Fecha de fin (DD/MM/AAAA)"
-                    formControlName="fechaFin"
-                  />
-                  <label for="institucion">Institución</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="institucion"
-                    placeholder="Institución"
-                    formControlName="institucion"
-                  />
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Nombre</h5>
+                  <app-nombre [dataUser]="dataUser"></app-nombre>
+                  <h5 class="card-title">Apellido</h5>
+                  <app-apellido [dataUser]="dataUser"></app-apellido>
+                  <h5 class="card-title">E-mail</h5>
+                  <app-email [dataUser]="dataUser"></app-email>
+                  <h5 class="card-title">Usuario</h5>
+                  <app-usuario [dataUser]="dataUser"></app-usuario>
                 </div>
-                <button type="submit" class="btn btn-primary">
-                  Agregar educación
-                </button>
-              </form>
-            </div>
-          </div>
-          <div *ngFor="let edu of estudios">
-            <div ngbDropdown class="d-inline-block">
-              <button
-                type="button"
-                class="btn btn-light"
-                id="eliminarEducacion"
-              >
-                <i class="fa-solid fa-trash"></i>
-              </button>
-              <div ngbDropdownMenu aria-labelledby="eliminarEducacion">
-                <form
-                  class="mx-2 my-auto ancho"
-                  (ngSubmit)="onDeleteEducacion($event)"
-                  [formGroup]="formDeleteEducacion"
-                >
-                  <div class="mb-3">
-                    <label for="deleteEduId">Id</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="deleteEduId"
-                      formControlName="deleteEduId"
-                      value="{{ edu.id }}"
-                      readonly
-                    />
-                  </div>
-                  <button type="submit" class="btn btn-primary">
-                    Eliminar educación
-                  </button>
-                </form>
               </div>
             </div>
-            <div ngbDropdown class="d-inline-block">
-              <button
-                type="button"
-                class="btn btn-light"
-                id="editarEducacion"
-                ngbDropdownToggle
-              >
-                <i class="fa-solid fa-pen-to-square"></i>
-              </button>
-              <div ngbDropdownMenu aria-labelledby="editarEducacion">
-                <form
-                  class="mx-2 my-auto ancho"
-                  (ngSubmit)="onEducacion($event)"
-                  [formGroup]="formEducacion"
-                >
-                  <div class="mb-3">
-                    <label for="titulo">Titulo</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="titulo"
-                      placeholder="Título"
-                      formControlName="titulo"
-                    />
-                    <label for="fechaInicio"
-                      >Fecha de inicio (DD/MM/AAAA)</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="fechaInicio"
-                      placeholder="Fecha de inicio (DD/MM/AAAA)"
-                      formControlName="fechaInicio"
-                    />
-                    <label for="fechaFin">Fecha de fin (DD/MM/AAAA)</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="fechaFin"
-                      placeholder="Fecha de fin (DD/MM/AAAA)"
-                      formControlName="fechaFin"
-                    />
-                    <label for="institucion">Institución</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="institucion"
-                      placeholder="Institución"
-                      formControlName="institucion"
-                    />
-                  </div>
-                  <button type="submit" class="btn btn-primary">
-                    Editar educación
-                  </button>
-                </form>
+          </div>
+          <div class="card mb-3 d-inline-block card-panel">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <h5 class="card-title">Telefono</h5>
+                <app-telefono [dataUser]="dataUser"></app-telefono>
+                <h5 class="card-title">Dirección</h5>
+                <app-direccion [dataUser]="dataUser"></app-direccion>
+                <h5 class="card-title">Ciudad</h5>
+                <app-ciudad [dataUser]="dataUser"></app-ciudad>
+                <h5 class="card-title">País de residencia</h5>
+                <app-pais [dataUser]="dataUser"></app-pais>
+                <h5 class="card-title">Fecha de nacimiento</h5>
+                <app-nacimiento [dataUser]="dataUser"></app-nacimiento>
+                <h5 class="card-title">Orientación sexual</h5>
+                <app-sexo [dataUser]="dataUser"></app-sexo>
+                <h5 class="card-title">Estado Civil</h5>
+                <app-estado-civil [dataUser]="dataUser"></app-estado-civil>
+              </div>
+              <div class="col-md-8">
+                <h5 class="card-title">Presentación personal y profesional</h5>
+                <app-presentacion [dataUser]="dataUser"></app-presentacion>
               </div>
             </div>
-            <ul>
-              <li>
-                Titulo:
-                <p>{{ edu.titulo }}</p>
-              </li>
-              <li>
-                Fecha de inicio:
-                <p>{{ edu.fechaInicio }}</p>
-              </li>
-              <li>
-                Fecha de finalización:
-                <p>{{ edu.fechaFin }}</p>
-              </li>
-              <li>
-                Institución:
-                <p>{{ edu.institucion }}</p>
-              </li>
-            </ul>
           </div>
-          <strong>Idiomas:</strong>
-          <div *ngFor="let idioma of idiomas">
-            <ul>
-              <li>
-                Idioma:
-                <p>{{ idioma.idioma }}</p>
-              </li>
-              <li>
-                Nivel:
-                <p>{{ idioma.nivel }}</p>
-              </li>
-            </ul>
+          <div class="card mb-3 d-inline-block card-panel">
+            <div class="row g-0">
+              <h5 class="card-title">Estudios</h5>
+              <app-estudios [dataUser]="dataUser"></app-estudios>
+            </div>
           </div>
-          <strong>Intereses:</strong>
-          <div *ngFor="let interes of intereses">
-            <ul>
-              <li>
-                Interes:
-                <p>{{ interes.interes }}</p>
-              </li>
-            </ul>
+          <div class="card mb-3 d-inline-block card-panel">
+            <div class="row g-0">
+              <h5 class="card-title">Idiomas</h5>
+              <app-idiomas-panel [dataUser]="dataUser"></app-idiomas-panel>
+            </div>
           </div>
-          <strong>Experiencia:</strong>
-          <div *ngFor="let exp of experiencias">
-            <ul>
-              <li>
-                Empresa:
-                <p>{{ exp.empresa }}</p>
-              </li>
-              <li>
-                Ocupación:
-                <p>{{ exp.titulo }}</p>
-              </li>
-              <li>
-                Descripción:
-                <p>{{ exp.descripcion }}</p>
-              </li>
-              <li>
-                Fecha de inicio:
-                <p>{{ exp.fechaInicio }}</p>
-              </li>
-              <li>
-                Fecha de finalización:
-                <p>{{ exp.fechaFin }}</p>
-              </li>
-            </ul>
+          <div class="card mb-3 d-inline-block card-panel">
+            <div class="row g-0">
+              <h5 class="card-title">Experiencia laboral</h5>
+              <app-exp-panel [dataUser]="dataUser"></app-exp-panel>
+            </div>
           </div>
-          <strong>Habilidades:</strong>
-          <div *ngFor="let habilidad of skills">
-            <ul>
-              <li>
-                Habilidad:
-                <p>{{ habilidad.skill }}</p>
-              </li>
-              <li>
-                Nivel:
-                <p>{{ habilidad.nivel }}</p>
-              </li>
-            </ul>
+          <div class="card mb-3 d-inline-block card-panel">
+            <div class="row g-0">
+              <h5 class="card-title">Habilidades</h5>
+              <app-skill-panel [dataUser]="dataUser"></app-skill-panel>
+            </div>
           </div>
-          <strong>Cursos:</strong>
-          <div *ngFor="let curso of cursos">
-            <ul>
-              <li>
-                Título:
-                <p>{{ curso.titulo }}</p>
-              </li>
-              <li>
-                Institución:
-                <p>{{ curso.lugar }}</p>
-              </li>
-              <li>
-                Descripción:
-                <p>{{ curso.descripcion }}</p>
-              </li>
-              <li>
-                Fecha:
-                <p>{{ curso.fecha }}</p>
-              </li>
-            </ul>
+          <div class="card mb-3 d-inline-block card-panel">
+            <div class="row g-0">
+              <h5 class="card-title">Cursos</h5>
+              <app-cursos-panel [dataUser]="dataUser"></app-cursos-panel>
+            </div>
           </div>
-          <strong>Mensajes enviados:</strong>
-          <div *ngFor="let mensaje of mensajes">
-            <ul>
-              <li>
-                Nombre:
-                <p>{{ mensaje.nombre }}</p>
-              </li>
-              <li>
-                E-mail:
-                <p>{{ mensaje.email }}</p>
-              </li>
-              <li>
-                Teléfono:
-                <p>{{ mensaje.telefono }}</p>
-              </li>
-              <li>
-                Página Web:
-                <p>{{ mensaje.web }}</p>
-              </li>
-              <li>
-                Mensaje:
-                <p>{{ mensaje.mensaje }}</p>
-              </li>
-            </ul>
+          <div class="card mb-3 d-inline-block card-panel">
+            <div class="row g-0">
+              <h5 class="card-title">Intereses</h5>
+              <app-intereses-panel [dataUser]="dataUser"></app-intereses-panel>
+            </div>
+          </div>
+          <div class="card mb-3 d-inline-block card-panel">
+            <div class="row g-0">
+              <h5 class="card-title">Mensajes enviados</h5>
+              <app-mensajes-panel [dataUser]="dataUser"></app-mensajes-panel>
+            </div>
           </div>
         </div>
       </div>

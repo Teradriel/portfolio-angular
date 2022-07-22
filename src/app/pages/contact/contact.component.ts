@@ -41,23 +41,26 @@ export class ContactComponent implements OnInit {
   onSubmit(event: Event) {
     event.preventDefault();
     if (this.form.valid) {
-      if (this.autenticacionService.NotLogged) {
-        this.mensajesService
-          .enviarMensaje(this.form.value)
-          .subscribe((data) => {
-            console.log('mensaje enviado');
-            this.form.reset();
-          });
+      if (!JSON.parse(localStorage.getItem('currentUser') || '{}').id) {
+        console.log('No esta logueado');
+        this.mensajesService.enviarMensaje(this.form.value).subscribe(() => {
+          alert('mensaje enviado');
+          this.form.reset();
+        });
       } else {
         this.mensajesService
-          .enviarMensajeId(this.form.value, this.autenticacionService.currentId)
+          .enviarMensajeId(
+            this.form.value,
+            JSON.parse(localStorage.getItem('currentUser') || '{}').id
+          )
           .subscribe((data) => {
-            console.log('mensaje enviado');
+            alert('mensaje enviado');
+            localStorage.setItem('userData', JSON.stringify(data));
             this.form.reset();
           });
       }
     } else {
-      console.log('form no valido');
+      alert('Formulario invalido, revise los campos');
     }
   }
 }

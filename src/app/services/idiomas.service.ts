@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Idioma } from '../interfaces/idioma';
 import { Observable } from 'rxjs';
+import { User } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root',
@@ -21,8 +22,8 @@ export class IdiomasService {
     return this.http.get<Idioma[]>(this.url + 'all');
   }
 
-  agregarIdiomas(newIdioma: Idioma): Observable<Idioma> {
-    return this.http.post<Idioma>(
+  agregarIdiomas(newIdioma: Idioma): Observable<User> {
+    return this.http.post<User>(
       this.url +
         'new/' +
         JSON.parse(localStorage.getItem('currentUser') || '{}').id,
@@ -34,7 +35,7 @@ export class IdiomasService {
     return this.http.put<Idioma>(this.url + 'edit/' + id, idioma);
   }
 
-  eliminarIdiomas(id: string): Observable<Idioma> {
-    return this.http.delete<Idioma>(this.url + 'delete/' + id);
+  eliminarIdiomas(id: string, user_id: string): Observable<User> {
+    return this.http.delete<User>(this.url + 'delete/' + id + '/' + user_id);
   }
 }

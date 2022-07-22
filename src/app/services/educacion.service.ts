@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Educacion } from '../interfaces/educacion';
 import { Observable } from 'rxjs';
+import { User } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root',
@@ -21,8 +22,8 @@ export class EducacionService {
     return this.http.get<Educacion[]>(this.url + 'all');
   }
 
-  agregarEducacion(newEstudio: Educacion): Observable<Educacion> {
-    return this.http.post<Educacion>(
+  agregarEducacion(newEstudio: Educacion): Observable<User> {
+    return this.http.post<User>(
       this.url +
         'new/' +
         JSON.parse(localStorage.getItem('currentUser') || '{}').id,
@@ -30,11 +31,11 @@ export class EducacionService {
     );
   }
 
-  editarEducacion(educacion: Educacion, id: string): Observable<Educacion> {
+  editarEducacion(educacion: Educacion, id: String): Observable<Educacion> {
     return this.http.put<Educacion>(this.url + 'edit/' + id, educacion);
   }
 
-  eliminarEducacion(id: string): Observable<Educacion> {
-    return this.http.delete<Educacion>(this.url + 'delete/' + id);
+  eliminarEducacion(id: string, user_id: string): Observable<User> {
+    return this.http.delete<User>(this.url + 'delete/' + id + '/' + user_id);
   }
 }

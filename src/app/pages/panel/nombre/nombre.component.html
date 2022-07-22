@@ -1,0 +1,30 @@
+<div>
+  <h2 class="d-inline-block">{{ dataUser.nombre }}</h2>
+  <div ngbDropdown class="d-inline-block">
+    <button type="button" class="btn" id="editarNombre" ngbDropdownToggle>
+      <i class="fa-solid fa-pen-to-square"></i>
+    </button>
+    <div ngbDropdownMenu aria-labelledby="editarNombre">
+      <form
+        class="mx-2 my-auto ancho"
+        (ngSubmit)="onNombre($event)"
+        [formGroup]="formNombre"
+      >
+        <div class="mb-3">
+          <label for="nombre">Nombre</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nombre"
+            placeholder="Nombre"
+            formControlName="nombre"
+            autocomplete="given-name"
+          />
+        </div>
+        <button ngbDropdownItem type="submit" class="btn btn-primary">
+          Editar nombre
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

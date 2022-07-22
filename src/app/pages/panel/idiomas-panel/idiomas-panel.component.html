@@ -1,0 +1,134 @@
+<div>
+  <div ngbDropdown class="d-inline-block">
+    <button type="button" class="btn" id="agregarIdioma" ngbDropdownToggle>
+      <i class="fa-solid fa-file-circle-plus"></i> Agregar idioma
+    </button>
+    <div ngbDropdownMenu aria-labelledby="agregarIdioma">
+      <form
+        class="mx-2 my-auto ancho"
+        (ngSubmit)="onAddIdioma($event)"
+        [formGroup]="formAddIdioma"
+      >
+        <div class="mb-3">
+          <label for="idioma">Idioma</label>
+          <input
+            type="text"
+            class="form-control"
+            id="idioma"
+            placeholder="Idioma"
+            formControlName="idioma"
+          />
+          <label for="nivel">nivel</label>
+          <select
+            class="form-control"
+            name="nivel"
+            id="nivel"
+            formControlName="nivel"
+          >
+            <option value="Basico">Basico</option>
+            <option value="Intermedio">Intermedio</option>
+            <option value="Avanzado">Avanzado</option>
+          </select>
+        </div>
+        <button ngbDropdownItem type="submit" class="btn btn-primary">
+          Agregar idioma
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-auto" *ngFor="let idioma of idiomas">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">{{ idioma.idioma }}</h5>
+          <div class="card-text">
+            <ul>
+              <li>Nivel: {{ idioma.nivel }}</li>
+            </ul>
+          </div>
+          <div ngbDropdown class="d-inline-block">
+            <button
+              type="button"
+              class="btn"
+              id="eliminarIdioma"
+              ngbDropdownToggle
+            >
+              <i class="fa-solid fa-trash"></i>
+            </button>
+            <div ngbDropdownMenu aria-labelledby="eliminarIdioma">
+              <form
+                class="mx-2 my-auto ancho"
+                (ngSubmit)="onDeleteIdioma($event, idioma.id, dataUser.id)"
+                [formGroup]="formDeleteIdioma"
+              >
+                <div class="mb-3">
+                  <label for="deleteIdioma"
+                    >¿Estás seguro de querer eliminar el idioma?</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="deleteIdioma"
+                    formControlName="deleteIdioma"
+                    placeholder="{{ idioma.idioma }}"
+                    readonly
+                  />
+                </div>
+                <button
+                  ngbDropdownItem
+                  type="submit"
+                  class="btn btn-primary"
+                  ngbDropdownToggle
+                >
+                  Eliminar Idioma
+                </button>
+              </form>
+            </div>
+          </div>
+          <div ngbDropdown class="d-inline-block">
+            <button
+              type="button"
+              class="btn"
+              id="editarIdioma"
+              ngbDropdownToggle
+            >
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+            <div ngbDropdownMenu aria-labelledby="editarIdioma">
+              <form
+                class="mx-2 my-auto ancho"
+                (ngSubmit)="onIdioma($event, idioma.id)"
+                [formGroup]="formIdiomas"
+              >
+                <div class="mb-3">
+                  <label for="idioma">Idioma</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="idioma"
+                    placeholder="Idioma"
+                    formControlName="idioma"
+                  />
+                  <label for="nivel">nivel</label>
+                  <select
+                    class="form-control"
+                    name="nivel"
+                    id="nivel"
+                    formControlName="nivel"
+                  >
+                    <option value="Basico">Basico</option>
+                    <option value="Intermedio">Intermedio</option>
+                    <option value="Avanzado">Avanzado</option>
+                  </select>
+                </div>
+                <button ngbDropdownItem type="submit" class="btn btn-primary">
+                  Editar Idioma
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

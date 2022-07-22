@@ -1,0 +1,107 @@
+<div>
+  <div ngbDropdown class="d-inline-block">
+    <button type="button" class="btn" id="agregarInteres" ngbDropdownToggle>
+      <i class="fa-solid fa-file-circle-plus"></i> Agregar interés
+    </button>
+    <div ngbDropdownMenu aria-labelledby="agregarInteres">
+      <form
+        class="mx-2 my-auto ancho"
+        (ngSubmit)="onAddInteres($event)"
+        [formGroup]="formAddIntereses"
+      >
+        <div class="mb-3">
+          <label for="interes">Interes</label>
+          <input
+            type="text"
+            class="form-control"
+            id="interes"
+            placeholder="Interés"
+            formControlName="interes"
+          />
+        </div>
+        <button ngbDropdownItem type="submit" class="btn btn-primary">
+          Agregar interés
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-auto" *ngFor="let interes of intereses">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">{{ interes.interes }}</h5>
+          <div ngbDropdown class="d-inline-block">
+            <button
+              type="button"
+              class="btn"
+              id="eliminarInteres"
+              ngbDropdownToggle
+            >
+              <i class="fa-solid fa-trash"></i>
+            </button>
+            <div ngbDropdownMenu aria-labelledby="eliminarInteres">
+              <form
+                class="mx-2 my-auto ancho"
+                (ngSubmit)="onDeleteInteres($event, interes.id, dataUser.id)"
+                [formGroup]="formDeleteIntereses"
+              >
+                <div class="mb-3">
+                  <label for="deleteInteres"
+                    >¿Estás seguro de querer eliminar el interés?</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="deleteInteres"
+                    formControlName="deleteInteres"
+                    placeholder="{{ interes.interes }}"
+                    readonly
+                  />
+                </div>
+                <button
+                  ngbDropdownItem
+                  type="submit"
+                  class="btn btn-primary"
+                  ngbDropdownToggle
+                >
+                  Eliminar interés
+                </button>
+              </form>
+            </div>
+          </div>
+          <div ngbDropdown class="d-inline-block">
+            <button
+              type="button"
+              class="btn"
+              id="editarInteres"
+              ngbDropdownToggle
+            >
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+            <div ngbDropdownMenu aria-labelledby="editarInteres">
+              <form
+                class="mx-2 my-auto ancho"
+                (ngSubmit)="onInteres($event, interes.id)"
+                [formGroup]="formIntereses"
+              >
+                <div class="mb-3">
+                  <label for="interes">Interes</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="interes"
+                    placeholder="Interés"
+                    formControlName="interes"
+                  />
+                </div>
+                <button ngbDropdownItem type="submit" class="btn btn-primary">
+                  Editar Interés
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -13,7 +13,7 @@
 }
 
 .panel-body {
-  width: 800px;
+  width: 85%;
   margin: 0 auto;
 }
 
@@ -50,4 +50,23 @@ p {
 
 .ancho {
   width: 450px;
+}
+
+.card-panel {
+  padding: 1rem;
+  width: 100%;
+}
+.card {
+  padding: 1rem;
+  display: flex;
+}
+
+.panel-heading {
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

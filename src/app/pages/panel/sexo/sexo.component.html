@@ -1,0 +1,33 @@
+<div>
+  <h2 class="d-inline-block">{{ dataUser.sexo }}</h2>
+  <div ngbDropdown class="d-inline-block">
+    <button type="button" class="btn" id="editarSexo" ngbDropdownToggle>
+      <i class="fa-solid fa-pen-to-square"></i>
+    </button>
+    <div ngbDropdownMenu aria-labelledby="editarSexo">
+      <form
+        class="mx-2 my-auto ancho"
+        (ngSubmit)="onSexo($event)"
+        [formGroup]="formSexo"
+      >
+        <div class="mb-3">
+          <label for="sexo">Orientación sexual</label>
+          <select
+            class="form-control"
+            id="sexo"
+            formControlName="sexo"
+            autocomplete="sex"
+          >
+            <option value="">elegir su orientacion sexual</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Femenino">Femenino</option>
+            <option value="Otros">Otros</option>
+          </select>
+        </div>
+        <button ngbDropdownItem type="submit" class="btn btn-primary">
+          Editar orientación sexual
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
