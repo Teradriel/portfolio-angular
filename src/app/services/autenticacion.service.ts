@@ -11,7 +11,7 @@ export class AutenticacionService {
   private logged: BehaviorSubject<boolean>;
   private notLogged: BehaviorSubject<boolean>;
   private currentUserSubject: BehaviorSubject<any>;
-  private url = 'http://localhost:8080/';
+  private url = 'https://radiant-hollows-94958.herokuapp.com/';
   public currentId = '';
 
   get Logged() {

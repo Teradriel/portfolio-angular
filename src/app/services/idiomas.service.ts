@@ -8,7 +8,7 @@ import { User } from '../interfaces/user';
   providedIn: 'root',
 })
 export class IdiomasService {
-  private url = 'http://localhost:8080/idioma/';
+  private url = 'https://radiant-hollows-94958.herokuapp.com/idioma/';
 
   constructor(private http: HttpClient) {}
 

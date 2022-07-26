@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class PersonaService {
-  private url = 'http://localhost:8080/';
+  private url = 'https://radiant-hollows-94958.herokuapp.com/';
 
   constructor(private http: HttpClient) {}
 

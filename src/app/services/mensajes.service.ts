@@ -8,7 +8,7 @@ import { User } from '../interfaces/user';
   providedIn: 'root',
 })
 export class MensajesService {
-  private url = 'http://localhost:8080/mensaje/';
+  private url = 'https://radiant-hollows-94958.herokuapp.com/mensaje/';
 
   constructor(private http: HttpClient) {}
 
