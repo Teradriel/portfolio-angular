@@ -42,7 +42,6 @@ export class ContactComponent implements OnInit {
     event.preventDefault();
     if (this.form.valid) {
       if (!JSON.parse(localStorage.getItem('currentUser') || '{}').id) {
-        console.log('No esta logueado');
         this.mensajesService.enviarMensaje(this.form.value).subscribe(() => {
           alert('mensaje enviado');
           this.form.reset();
