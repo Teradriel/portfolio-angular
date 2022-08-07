@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AutenticacionService } from '../../services/autenticacion.service';
+import { PersonaService } from 'src/app/services/persona.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
     private modalService: NgbModal,
     private formbuilder: FormBuilder,
     private autenticacionService: AutenticacionService,
-    private ruta: Router
+    private ruta: Router,
+    private personaService: PersonaService
   ) {
     this.form = this.formbuilder.group({
       usuario: ['', [Validators.required, Validators.minLength(3)]],
@@ -94,8 +96,11 @@ export class LoginComponent implements OnInit {
     event.preventDefault();
     this.autenticacionService
       .IniciarSesion(this.form.value.usuario, this.form.value.pass)
-      .subscribe(() => {
+      .subscribe((user) => {
         this.ruta.navigate(['home']);
+        this.personaService.getPersona(user.id).subscribe((persona) => {
+          localStorage.setItem('userData', JSON.stringify(persona));
+        });
       });
   }
 

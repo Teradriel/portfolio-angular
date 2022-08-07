@@ -45,9 +45,6 @@ export class AutenticacionService {
       })
       .pipe(
         map((user) => {
-          this.personaService.getPersona(user.id).subscribe((persona) => {
-            localStorage.setItem('userData', JSON.stringify(persona));
-          });
           localStorage.setItem('currentUser', JSON.stringify(user));
           this.currentId = user.id;
           this.logged.next(true);
