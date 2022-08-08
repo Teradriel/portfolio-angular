@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { PersonaService } from './persona.service';
 import { map } from 'rxjs/operators';
+import { User } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,10 @@ export class AutenticacionService {
   private logged: BehaviorSubject<boolean>;
   private notLogged: BehaviorSubject<boolean>;
   private currentUserSubject: BehaviorSubject<any>;
+
   private url = 'https://radiant-hollows-94958.herokuapp.com/';
+  //private url = 'http://localhost:8080/';
+
   public currentId = '';
 
   get Logged() {
@@ -37,9 +41,9 @@ export class AutenticacionService {
     );
   }
 
-  IniciarSesion(username: string, password: string): Observable<any> {
+  IniciarSesion(username: string, password: string): Observable<User> {
     return this.http
-      .post<any>(this.url + 'api/auth/signin', {
+      .post<User>(this.url + 'api/auth/signin', {
         username,
         password,
       })

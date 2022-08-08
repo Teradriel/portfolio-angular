@@ -9,6 +9,7 @@ import { User } from '../interfaces/user';
 })
 export class SkillsService {
   private url = 'https://radiant-hollows-94958.herokuapp.com/skill/';
+  //private url = 'http://localhost:8080/skill/';
 
   constructor(private http: HttpClient) {}
 

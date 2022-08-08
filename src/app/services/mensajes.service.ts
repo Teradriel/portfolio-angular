@@ -9,6 +9,7 @@ import { User } from '../interfaces/user';
 })
 export class MensajesService {
   private url = 'https://radiant-hollows-94958.herokuapp.com/mensaje/';
+  //private url = 'http://localhost:8080/mensaje/';
 
   constructor(private http: HttpClient) {}
 

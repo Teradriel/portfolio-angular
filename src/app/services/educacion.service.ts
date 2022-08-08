@@ -9,6 +9,7 @@ import { User } from '../interfaces/user';
 })
 export class EducacionService {
   private url = 'https://radiant-hollows-94958.herokuapp.com/estudio/';
+  //private url = 'http://localhost:8080/estudio/';
 
   constructor(private http: HttpClient) {}
 

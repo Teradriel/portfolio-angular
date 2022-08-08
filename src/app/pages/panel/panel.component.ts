@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/interfaces/user';
+import { PersonaService } from 'src/app/services/persona.service';
 
 @Component({
   selector: 'app-panel',
@@ -7,6 +8,8 @@ import { User } from 'src/app/interfaces/user';
   styleUrls: ['./panel.component.css'],
 })
 export class PanelComponent implements OnInit {
+  userId = '';
+
   dataUser: User = {
     id: '',
     nombre: '',
@@ -46,9 +49,16 @@ export class PanelComponent implements OnInit {
     roles: { id: '', name: '' },
   };
 
-  constructor() {}
+  constructor(private personaService: PersonaService) {}
 
   ngOnInit(): void {
     this.dataUser = JSON.parse(localStorage.getItem('userData') || '{}');
+  }
+
+  getAll() {
+    this.userId = JSON.parse(localStorage.getItem('currentUser') || '{}').id;
+    this.personaService.getPersona(this.userId).subscribe((persona) => {
+      localStorage.setItem('userData', JSON.stringify(persona));
+    });
   }
 }
