@@ -52,7 +52,14 @@ export class PanelComponent implements OnInit {
   constructor(private personaService: PersonaService) {}
 
   ngOnInit(): void {
-    this.dataUser = JSON.parse(localStorage.getItem('userData') || '{}');
+    this.userId = JSON.parse(localStorage.getItem('currentUser') || '{}').id;
+    this.personaService
+      .getPersona(JSON.parse(this.userId))
+      .subscribe((persona) => {
+        this.dataUser = persona;
+        localStorage.setItem('userData', JSON.stringify(persona));
+      });
+    /* this.dataUser = JSON.parse(localStorage.getItem('userData') || '{}'); */
   }
 
   getAll() {
