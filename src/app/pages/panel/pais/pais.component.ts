@@ -11,19 +11,13 @@ import { PersonaService } from 'src/app/services/persona.service';
 export class PaisComponent implements OnInit {
   @Input() dataUser!: User;
   formPais: FormGroup;
+  
   constructor(
     private personaService: PersonaService,
     private formbuilder: FormBuilder
   ) {
     this.formPais = this.formbuilder.group({
-      pais: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.pattern('[a-zA-Z ]*'),
-        ],
-      ],
+      pais: ['',[Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*'),],],
     });
   }
 

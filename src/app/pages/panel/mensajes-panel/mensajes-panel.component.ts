@@ -36,6 +36,6 @@ export class MensajesPanelComponent implements OnInit {
   listaMensajes(): void {
     this.mensajes = JSON.parse(
       localStorage.getItem('userData') || '{}'
-    ).mensaje;
+    ).mens;
   }
 }

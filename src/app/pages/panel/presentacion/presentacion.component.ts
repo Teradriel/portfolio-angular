@@ -17,11 +17,12 @@ export class PresentacionComponent implements OnInit {
     private formbuilder: FormBuilder
   ) {
     this.formIntro = this.formbuilder.group({
-      intro: ['', Validators.required, Validators.minLength(10)],
+      intro: ['', [Validators.required, Validators.minLength(10)]],
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   onIntro(event: Event) {
     this.dataUser.intro = this.formIntro.value.intro;
