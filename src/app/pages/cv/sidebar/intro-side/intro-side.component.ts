@@ -28,9 +28,9 @@ export class IntroSideComponent implements OnInit {
     this.imagen = JSON.parse(localStorage.getItem('userData') || '{}').imagen;
     this.tag1 = JSON.parse(
       localStorage.getItem('userData') || '{}'
-    ).estudio[1].titulo;
+    ).estudio[0].titulo;
     this.tag2 = JSON.parse(
       localStorage.getItem('userData') || '{}'
-    ).estudio[2].titulo;
+    ).estudio[1].titulo;
   }
 }
