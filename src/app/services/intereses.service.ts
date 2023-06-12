@@ -8,8 +8,8 @@ import { User } from '../interfaces/user';
   providedIn: 'root',
 })
 export class InteresesService {
-  private url = 'https://radiant-hollows-94958.herokuapp.com/interes/';
-  //private url = 'http://localhost:8080/interes/';
+  //private url = 'https://radiant-hollows-94958.herokuapp.com/interes/';
+  private url = 'http://localhost:8080/interes/';
 
   constructor(private http: HttpClient) {}
 

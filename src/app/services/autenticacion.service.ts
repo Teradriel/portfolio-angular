@@ -13,8 +13,8 @@ export class AutenticacionService {
   private notLogged: BehaviorSubject<boolean>;
   private currentUserSubject: BehaviorSubject<any>;
 
-  private url = 'https://radiant-hollows-94958.herokuapp.com/';
-  //private url = 'http://localhost:8080/';
+  //private url = 'https://radiant-hollows-94958.herokuapp.com/';
+  private url = 'http://localhost:8080/';
 
   public currentId = '';
 
@@ -34,10 +34,10 @@ export class AutenticacionService {
       JSON.parse(localStorage.getItem('currentUser') || '{}')
     );
     this.logged = new BehaviorSubject<boolean>(
-      JSON.parse(localStorage.getItem('currentUser') || '{}') !== {}
+      JSON.parse(localStorage.getItem('currentUser') || '{}')
     );
     this.notLogged = new BehaviorSubject<boolean>(
-      JSON.parse(localStorage.getItem('currentUser') || '{}') === {}
+      !JSON.parse(localStorage.getItem('currentUser') || '{}')
     );
   }
 

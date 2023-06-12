@@ -62,10 +62,10 @@ export class PanelComponent implements OnInit {
     /* this.dataUser = JSON.parse(localStorage.getItem('userData') || '{}'); */
   }
 
-  getAll() {
+  /* getAll() {
     this.userId = JSON.parse(localStorage.getItem('currentUser') || '{}').id;
     this.personaService.getPersona(this.userId).subscribe((persona) => {
       localStorage.setItem('userData', JSON.stringify(persona));
-    });
-  }
+    }); 
+  }*/
 }
